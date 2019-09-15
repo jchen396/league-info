@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.scss'
-import Input from './components/Input'
 import NavBar from './components/NavBar'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Home from './components/home'
@@ -20,7 +19,6 @@ function App() {
               <Route path="/:post_id" component={Post}/>
             </Switch>
         </BrowserRouter>
-        <Input/>
     </div>
   );
 }

@@ -1,42 +1,46 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Input from './Input'
 
 class Home extends Component{
     state = {
-        posts: [ ]
+        champions: []
     }
     componentWillMount(){
-        axios.get('ttps://overwatch-api.net/api/v1/ability?page=10&limit=20')
+        axios.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json')
             .then(res => {
-                console.log(res.data);
                 this.setState({
-                    posts: res.data.slice(0,10)
+                    champions: res.data.data
                 })
             })
     }
     render(){
-        const {posts} = this.state;
-        const postList = posts.length ? (
-            posts.map(post => {
+        const {champions} = this.state;
+        const championPool = champions.length ? (
+            champions.map(champ => {
                 return (
-                    <div className="post card" key={post.id}>
+                    <div className="post card" key={champ.key}>
                         <div className="card-content">
-                            <Link to={'/' + post.id} >
-                            <span className="card-title red-text">{post.title}</span>
+                            <Link to={'/' + champ.id} >
+                            <span className="card-title red-text">{champ.id}</span>
                             </Link>
-                            <p>{post.body}</p>
+                            <p>{champ.title}</p>
                         </div>  
                     </div>
                 )
             })
         ) : (
-            <div className="center">Type below to search</div>
+            <div className="center">No results were found</div>
         )
+        console.log(champions)
         return(
             <div className="container home">
-                <h4 className="center">Home</h4>
-                {postList}
+                <h6 className="center">Type below to search</h6>
+                <Input />
+                <div className="results">
+                    {championPool}
+                </div>
             </div>
         );
     }

@@ -4,7 +4,7 @@ export default function Input() {
     return(
         <div className="form-search">
             <form action="">
-                <input type="text"/>
+                <input className="center" type="text"/>
             </form>
         </div>
     );

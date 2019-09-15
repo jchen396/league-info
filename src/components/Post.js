@@ -7,10 +7,10 @@ class Post extends Component{
     }
     componentDidMount(){
         let id = this.props.match.params.post_id;
-        axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
+        axios.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json' + id)
             .then(res => {
                 this.setState({
-                    post: res.data
+                    post: res.data.data
                 })
                 console.log(res);
             })

@@ -24,3 +24,16 @@ input{
     color: $base-textcolor;
     width: 2em; height: 2em;
 }
+
+// CARDS
+.results{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) ); 
+}
+
+.post{
+    background: $black-background;
+    border: lightblue solid 1px;
+    border-radius: 0.5em;
+}
