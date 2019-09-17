@@ -25,9 +25,9 @@ export default function Home () {
         return(
             <div className="post card" key={champ.key}>
                 <Link to={'/' + champ.id} >
-                    <img src={champ.image} alt="splash-art"/>
                     <div className="card-content">
-                        <span className="card-title red-text">{champ.id}</span>
+                        <img src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_0.jpg`} alt="splash-art" height="200" width="120" />
+                        <span className="card-title">{champ.id}</span>
                         <p>{champ.title}</p>
                     </div>  
                 </Link>

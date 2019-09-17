@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Belleza&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Bellefair&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 
 // VARIABLES
 $black-background: #0D0C1D;
@@ -52,6 +53,16 @@ nav #brand-logo {
     background: $black-background;
     border: lightblue solid 1px;
     border-radius: 0.5em;
+}
+
+.card-content{
+    align-items: center;
+    color: $base-textcolor;
+}
+
+.card-content span{
+    color: rgb(96, 96, 149);
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .no-results{
