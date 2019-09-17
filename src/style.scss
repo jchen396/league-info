@@ -44,9 +44,13 @@ nav #brand-logo {
 
 // CARDS
 .results{
+    height: 300px;
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 50px;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    align-items: center;
+    justify-items: center;
+    transition: all 1s ease-out
 }
 
 .post{
@@ -60,8 +64,9 @@ nav #brand-logo {
 }
 
 .card-content{
-    align-items: center;
+    text-align: center;
     color: $base-textcolor;
+    height: 320px;
 }
 
 .card-content span{
