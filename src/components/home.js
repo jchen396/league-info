@@ -1,9 +1,10 @@
+// -> App.js
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Input from './Input'
 
-export default function Home () {
+export default function Home ({search}) {
     const [champions, setChampions] = useState([]);
     useEffect(() => {
         let cancel
@@ -19,9 +20,9 @@ export default function Home () {
         return () => cancel();
     }, []);
 
+    const champSearch = search
     const champArray = Object.values(champions)
-    const champPool = champArray ? champArray.map((champ) => {
-        console.log(champ)
+    const champPool = champSearch ? champArray.map((champ) => {
         return(
             <div className="post card" key={champ.key}>
                 <Link to={'/' + champ.id} >
@@ -37,12 +38,8 @@ export default function Home () {
         <div className="center no-results">No results were found</div>
         )
     return (
-        <div className="container home">
-            <h6 className="center">Type below to search</h6>
-            <Input />
-            <div className="results">
-                {champPool}
-            </div>
+        <div className="results">
+            {champPool}
         </div>
     );
 }
