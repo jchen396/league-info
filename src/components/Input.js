@@ -1,9 +1,12 @@
-// -> home.js
+// -> App.js
 import React, {useState, useEffect} from 'react';
 import Home from './home';
 
 export default function Input() {
     const [search, setSearch] = useState([]);
+    useEffect(() => {
+        console.log(search)
+    }, [search])
     return(
         <div className="container home">
             <h6 className="center">Type below to search</h6>
