@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+@mixin grid-self{
+    display:grid;
+    align-items: center;
+    justify-items: center;
+}
+
+// DATA DISPLAY
+.main-display {
+    @include grid-self;
+    grid-template-columns: 1fr 2fr;
+}
+
+.main-image h2{
+    text-align: center;
+    color: rgb(96, 96, 149);
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main-info .champ-name{
+    text-align: center;
+}
+
+.spell-info{
+    @include grid-self;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
