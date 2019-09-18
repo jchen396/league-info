@@ -14,13 +14,23 @@ export default function Post({match}) {
     const infoList = infoArray ? (infoArray.map((champ) => {
         if(match.params.post_id === champ.id)
             return(
-                <div className="champ-container" key={champ.key}>
+                <div className="container" key={champ.key}>
                     <img src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_0.jpg`} alt="splash-art" height="500" width="300" />
+                    
                 </div>
             )
     })) : (
-        <div className="center no-result">Loading...</div>
+        <div className="center no-result">API is not found.</div>
     )
+
+    const checkEmpty = (value) => {
+        return value === undefined
+    }
+    if(infoList.every(checkEmpty)){
+        return(
+            <div className="center no-results">Loading . . .</div>
+        )
+    }
     return(
         <div>
             {infoList}
