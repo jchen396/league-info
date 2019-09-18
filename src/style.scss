@@ -55,12 +55,14 @@ nav #brand-logo {
 
 .post{
     background: $black-background;
-    border: rgb(60, 119, 236) outset 1.5px;
+    border: rgba(60, 119, 236, 0) outset 1.5px;
     border-radius: 0.5em;
+    background-clip: padding-box;
 }
 
 .post:hover {
     border: rgb(60, 119, 236) inset 1.5px;
+    transition: all 0.2s ease;
 }
 
 .card-content{

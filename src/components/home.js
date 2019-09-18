@@ -54,7 +54,6 @@ export default function Home ({search}) {
     const checkEmpty = (value) => {
         return value === undefined
     }
-    console.log("empty? ",champPool.every(checkEmpty))
     if(champPool.every(checkEmpty)){
         return(
             <div className="center no-results">No results were found</div>
