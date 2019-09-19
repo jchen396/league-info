@@ -13,29 +13,46 @@ export default function Post({match}) {
     },[])
     const infoArray = Object.values(info)
     const infoList = infoArray ? (infoArray.map((champ) => {
-            return(
-                <div className="main-display container" key={champ.key}>
-                    <div className="main-image">
-                        <h2 classNAme="champ-name">{champ.name}</h2>
-                        <img src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_0.jpg`} alt="splash-art" />
-                    </div>
-                    <div className="main-info right">
-                        <div className="skill-set">
-                            {champ.spells.map((spell) => {
-                                return(
-                                    <div className="spell-info">
-                                        <img src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/${spell.id}.png`} alt=""/>
-                                        <div className="spell-text">
+        return(
+            <div className="main-display container" key={champ.key}>
+                <div className="main-image">
+                    <h2 classNAme="champ-name">{champ.name}</h2>
+                    <img src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_0.jpg`} alt="splash-art" />
+                </div>
+                <div className="main-info">
+                    <div className="skill-set">
+                        {champ.spells.map((spell) => {
+                            return(
+                                <div className="spell-info" key={champ.key}>
+                                    <img src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/${spell.id}.png`} alt={spell.id}/>
+                                    <div className="spell-text">
+                                        <div className="spell-head">
                                             <h5>{spell.name}</h5>
-                                            <p>{spell.description}</p>
+                                            <div className="cooldown-text">
+                                                <p>Cooldown:</p>
+                                                <p>{spell.cooldown.map((cd) => { //map through spell cooldowns
+                                                return(
+                                                    ` [${cd}]`
+                                                )
+                                                })}</p>
+                                            </div>
+                                        </div>
+                                        <div className="spell-body">
+                                            <p>{spell.costType}:</p>
+                                            <p>{spell.cost.map((cost) => { //map through spell cast costs
+                                                return(
+                                                    ` [${cost}]`
+                                                )
+                                                })}</p>
                                         </div>
                                     </div>
-                                )
-                            })}
-                        </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
-            )
+            </div>
+        )
     })) : (
         <div className="center no-result">API is not found.</div>
     )

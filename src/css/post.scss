@@ -3,13 +3,19 @@
 @mixin grid-self{
     display:grid;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
+    
 }
 
 // DATA DISPLAY
 .main-display {
     @include grid-self;
     grid-template-columns: 1fr 2fr;
+    align-items: inherit;
+}
+
+.main-image{
+    transform: translate(10%,-4%);
 }
 
 .main-image h2{
@@ -17,12 +23,37 @@
     color: rgb(96, 96, 149);
     font-family: 'Ubuntu', sans-serif;
 }
+.main-image img{
+    justify-self: center;
+}
 
-.main-info .champ-name{
-    text-align: center;
+.main-info{
+    transform: translateX(-5%);
+    justify-items: start;
 }
 
 .spell-info{
+    justify-items: center;
     @include grid-self;
+    grid-column-gap: 2em;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.spell-info img{
+    justify-self: end;
+}
+
+.spell-text{
+    justify-self: start;
+}
+
+.spell-head h5{
+    font-size: 3.5vh;
+    color: rgb(82, 12, 147);
+}
+
+.cooldown-text,
+.spell-body{
+    display:flex;
+    justify-content: start;
 }
