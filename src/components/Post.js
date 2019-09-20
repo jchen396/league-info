@@ -14,7 +14,7 @@ export default function Post({match}) {
     const infoArray = Object.values(info)
     const infoList = infoArray ? (infoArray.map((champ) => {
         return(
-            <div className="main-display container" key={champ.key}>
+            <div className="main-display" key={champ.key}>
                 <div className="main-image">
                     <h2 classNAme="champ-name">{champ.name}</h2>
                     <img src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_0.jpg`} alt="splash-art" />
@@ -26,24 +26,24 @@ export default function Post({match}) {
                                 <div className="spell-info" key={champ.key}>
                                     <img src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/${spell.id}.png`} alt={spell.id}/>
                                     <div className="spell-text">
-                                        <div className="spell-head">
-                                            <h5>{spell.name}</h5>
-                                            <div className="cooldown-text">
-                                                <p>Cooldown:</p>
-                                                <p>{spell.cooldown.map((cd) => { //map through spell cooldowns
-                                                return(
-                                                    ` [${cd}]`
-                                                )
-                                                })}</p>
-                                            </div>
-                                        </div>
+                                        <h5>{spell.name}</h5>
                                         <div className="spell-body">
-                                            <p>{spell.costType}:</p>
-                                            <p>{spell.cost.map((cost) => { //map through spell cast costs
-                                                return(
-                                                    ` [${cost}]`
-                                                )
-                                                })}</p>
+                                            <div className="cd-text">
+                                                <p>Cooldown:</p>
+                                                    <p>{spell.cooldown.map((cd) => { //map through spell cooldowns
+                                                    return(
+                                                        ` [${cd}]`
+                                                    )
+                                                    })}</p>
+                                            </div>
+                                            <div className="cost-text">
+                                                <p>{spell.costType}:</p>
+                                                <p>{spell.cost.map((cost) => { //map through spell cast costs
+                                                    return(
+                                                        ` [${cost}]`
+                                                    )
+                                                    })}</p>         
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +56,6 @@ export default function Post({match}) {
     })) : (
         <div className="center no-result">API is not found.</div>
     )
-    console.log(infoArray)
     const checkEmpty = (value) => {
         return value === undefined
     }
