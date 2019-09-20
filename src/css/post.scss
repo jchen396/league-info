@@ -44,6 +44,19 @@
     justify-items: start;
 }
 
+.cd-text span{
+    color: rgb(135, 226, 141);
+    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: 0.05px;
+}
+
+.cost-text span{
+    color: rgb(230, 233, 143);
+    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: 0.05px;
+
+}
+
 @media screen and (max-width: 719px){
     //IMAGE (LEFT)
     .main-image img{
@@ -57,9 +70,15 @@
         max-width: 40%;
     }
     .spell-text h5{
-        font-size: 5vw;
+        font-size: 4vw;
     }
-    .spell-text p{
+    .spell-text p,
+    .spell-text span{
         font-size: 2vw;
     }
+    .cd-text,
+    .cost-text{
+    @include grid-self;
+    justify-items: start;
+}
 } 

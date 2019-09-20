@@ -29,15 +29,15 @@ export default function Post({match}) {
                                         <h5>{spell.name}</h5>
                                         <div className="spell-body">
                                             <div className="cd-text">
-                                                <p>Cooldown:</p>
-                                                    <p>{spell.cooldown.map((cd) => { //map through spell cooldowns
+                                                <span>Cooldown:</span>
+                                                <p>{spell.cooldown.map((cd) => { //map through spell cooldowns
                                                     return(
                                                         ` [${cd}]`
                                                     )
                                                     })}</p>
                                             </div>
                                             <div className="cost-text">
-                                                <p>{spell.costType}:</p>
+                                                <span>{spell.costType}:</span>
                                                 <p>{spell.cost.map((cost) => { //map through spell cast costs
                                                     return(
                                                         ` [${cost}]`
