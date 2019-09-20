@@ -11,13 +11,34 @@ export default function Post({match}) {
                 setInfo(res.data.data) //retrieve data from api
             })
     },[])
+    const [skin, setSkin] = useState(0)
+    const [select, setSelect] = useState(false)
+    const [classList, setClassList] = useState("skin-screen")
+    useEffect(() => { // selecting champion skins
+        console.log(select)
+        console.log(classList)
+        if(select)
+            setClassList("skin-screen open")
+        else
+            setClassList("skin-screen")
+    }, [select])
     const infoArray = Object.values(info)
     const infoList = infoArray ? (infoArray.map((champ) => {
         return(
             <div className="main-display" key={champ.key}>
+                <div className={classList}>
+                    <div className="skin-select">
+                        {champ.skins.map((skin, key) => {
+                            return(
+                                <img key={key} onClick={() => {setSkin(skin.num); setSelect(false)}} src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_${skin.num}.jpg`} alt="splash-art" />
+                            )
+                        })}
+                    </div>
+                </div>
                 <div className="main-image">
-                    <h2 classNAme="champ-name">{champ.name}</h2>
-                    <img src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_0.jpg`} alt="splash-art" />
+                    <h2 className="champ-name">{champ.name}</h2>
+                    <div className="change-skin"><button onClick={() => setSelect(true)} >Change Skin</button></div> {/*BUTTON TO SWITCH SKINS*/}
+                    <img src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_${skin}.jpg`} alt="splash-art" />
                 </div>
                 <div className="main-info">
                     <div className="skill-set">

@@ -4,7 +4,7 @@ import NavBar from './components/NavBar'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Input from './components/Input'
 import About from './components/about'
-import Contact from './components/contact'
+import Players from './components/players'
 import Post from './components/Post'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={Input} />
               <Route path='/about' component={About}/>
-              <Route path='/contact' component={Contact}/>
+              <Route path='/players' component={Players}/>
               <Route path="/:post_id" component={Post}/>
             </Switch>
         </BrowserRouter>

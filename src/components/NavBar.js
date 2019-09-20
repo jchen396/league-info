@@ -15,9 +15,9 @@ export default function NavBar() {
             <div className="container">
                 <div className="brand-logo">LeagueInfo</div>
                 <ul className={classList}>
-                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/">Champions</NavLink></li>
+                    <li><NavLink to="/players">Players</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
-                    <li><NavLink to="/contact">Contact</NavLink></li>
                 </ul>
                 <div className="hamburger" 
                 onClick={() => active ?  setActive(false) : setActive(true)}>

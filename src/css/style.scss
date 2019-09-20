@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Belleza&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Bellefair&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
 // VARIABLES
 $black-background: #0D0C1D;
-$base-textcolor: #EFFFFA;
+$base-textcolor: rgb(150, 168, 162);
 
 /* GLOBAL */
 html, body {
@@ -33,6 +34,7 @@ input{
     margin-top: 3em;
 }
 
+// NAVBAR
 nav{
     box-shadow: 0px 1px 100px 4px rgba(167, 148, 238, 0.8);
 }
@@ -41,7 +43,11 @@ nav{
     background-color: rgba(125, 91, 190, 0.8);
 }
 
-nav #brand-logo {
+.responsive{
+    font-family: 'Anton', sans-serif;
+}
+
+.brand-logo {
     font-family: 'Bellefair', serif;
 }
 
@@ -59,7 +65,7 @@ nav #brand-logo {
     cursor: pointer;
     padding: 0;
     z-index: 10;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .hamburger span{
@@ -107,6 +113,12 @@ nav #brand-logo {
     transform: translate( -50%, 1000%);
 }
 
+// ANIMATIONS
+@keyframes navAppear{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+
 @media screen and (max-width: 768px){
     .hamburger{
         display: flex;
@@ -115,7 +127,12 @@ nav #brand-logo {
     .right{
         display: none;
     }
+    .right li{
+        opacity: 0;
+    }
     .responsive{
+        transition: 0.3s ease all;
+        padding: 1em 0px;
         width: 100vw;
         left:0;
         position: absolute;
@@ -126,10 +143,12 @@ nav #brand-logo {
         align-items: center;
         z-index: 10;
         top: 8.85%;
+        animation: navAppear 0.3s ease-out forwards;
     }
     .responsive li{
         border-bottom: 1px solid transparent;
         transition: 0.3s ease all;
+        opacity: 1;
     }
     .responsive li:hover{
         border-bottom: white 1px solid;
