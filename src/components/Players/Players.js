@@ -1,18 +1,13 @@
+// -> App.js    
 import React, {useState, useEffect, useRef} from 'react'
-import Search from 'search'
+import Search from './Search'
 
 export default function Players() {
     const inputRef = useRef()
-    const [search, setSearch] = useState([]);
-    useEffect(() => {
-        console.log(search)
-    }, [search])
-
-
-
+    const [search, setSearch] = useState("Aeiou");
     return(
         <div className="container home">
-            <h6 className="center">Type below to search</h6>
+            <h6 className="center">Enter Summoner ID to search</h6>
             <div className="form-search">
                 <form action="" onSubmit={e => {
                     e.preventDefault()

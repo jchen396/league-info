@@ -1,6 +1,6 @@
 // -> App.js
 import React, {useState} from 'react';
-import Cards from './cards';
+import Cards from './Cards';
 
 export default function Champions() {
     const [search, setSearch] = useState([]);

@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Champions from './components/Champions/Champions'
 import About from './components/About/About'
 import Players from './components/Players/Players'
-import Post from './components/Champions/post'
+import Post from './components/Champions/Post'
 
 function App() {
   return (
