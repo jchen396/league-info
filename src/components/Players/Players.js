@@ -4,7 +4,7 @@ import Search from './Search'
 
 export default function Players() {
     const inputRef = useRef()
-    const [search, setSearch] = useState("Aeiou");
+    const [search, setSearch] = useState("Zephistry");
     return(
         <div className="container home">
             <h6 className="center">Enter Summoner ID to search</h6>

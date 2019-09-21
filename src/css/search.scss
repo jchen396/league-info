@@ -1,0 +1,11 @@
+@mixin grid-self{
+    display:grid;
+    align-items: center;
+    justify-items: start;
+}
+
+.profile-head{
+    @include grid-self();
+    grid-template-columns: 1fr 1fr 2fr 2fr;
+    grid-template-rows: 1fr 2fr;
+}
