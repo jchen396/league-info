@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
-import '../css/post.scss'
+import '../../css/post.scss'
 
 export default function Post({match}) {
     const [info, setInfo] = useState([])

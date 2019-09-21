@@ -2,10 +2,10 @@ import React from 'react';
 import './css/style.scss'
 import NavBar from './components/NavBar'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Input from './components/Input'
-import About from './components/about'
-import Players from './components/players'
-import Post from './components/Post'
+import Champions from './components/Champions/Champions'
+import About from './components/About/About'
+import Players from './components/Players/Players'
+import Post from './components/Champions/post'
 
 function App() {
   return (
@@ -13,9 +13,9 @@ function App() {
         <BrowserRouter>
             <NavBar />
             <Switch>
-              <Route exact path='/' component={Input} />
-              <Route path='/about' component={About}/>
+              <Route exact path='/' component={Champions} />
               <Route path='/players' component={Players}/>
+              <Route path='/about' component={About}/>
               <Route path="/:post_id" component={Post}/>
             </Switch>
         </BrowserRouter>

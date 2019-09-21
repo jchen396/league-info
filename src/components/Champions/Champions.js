@@ -1,9 +1,10 @@
 // -> App.js
 import React, {useState} from 'react';
-import Home from './home';
+import Cards from './cards';
 
-export default function Input() {
+export default function Champions() {
     const [search, setSearch] = useState([]);
+    console.log(search)
     return(
         <div className="container home">
             <h6 className="center">Type below to search</h6>
@@ -12,8 +13,7 @@ export default function Input() {
                     <input className="center" spellCheck="false" value={search} type="text" onChange={e => setSearch(e.target.value)}/>
                 </form>
             </div>
-            <Home search={search}/>
-        </div>
-                
+            <Cards search={search}/>
+        </div>          
     );
 }
