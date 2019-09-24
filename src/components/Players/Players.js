@@ -1,5 +1,5 @@
 // -> App.js    
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 import Search from './Search'
 
 export default function Players() {
@@ -17,6 +17,5 @@ export default function Players() {
             </div>
             <Search search={search}/>
         </div>
-
     )
 }

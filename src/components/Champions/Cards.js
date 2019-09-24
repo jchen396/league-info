@@ -1,9 +1,9 @@
-// -> champion.js
+// -> Champion.js -> App.js
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
-export default function Cards ({search}) {
+export default function Cards({search}) {
     const [champions, setChampions] = useState([]);
     useEffect(() => {
         let cancel

@@ -4,7 +4,6 @@ import Cards from './Cards';
 
 export default function Champions() {
     const [search, setSearch] = useState([]);
-    console.log(search)
     return(
         <div className="container home">
             <h6 className="center">Type below to search</h6>

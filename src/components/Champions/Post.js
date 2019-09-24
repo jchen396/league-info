@@ -1,3 +1,4 @@
+// -> Champion.js -> App.js
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import '../../css/post.scss'
@@ -10,13 +11,11 @@ export default function Post({match}) {
             .then(res => {
                 setInfo(res.data.data) //retrieve data from api
             })
-    },[])
+    }, [match])
     const [skin, setSkin] = useState(0)
     const [select, setSelect] = useState(false)
     const [classList, setClassList] = useState("skin-screen")
     useEffect(() => { // selecting champion skins
-        console.log(select)
-        console.log(classList)
         if(select)
             setClassList("skin-screen open")
         else
