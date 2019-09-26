@@ -16,7 +16,6 @@ export default function Matches({accId, api}) {
     }, [accId, api])
     return(
         <div>
-            {accId}
         </div>
     );
 }

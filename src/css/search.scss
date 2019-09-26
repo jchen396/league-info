@@ -4,8 +4,13 @@
     justify-items: start;
 }
 
+.result-container{
+    @include grid-self();
+    grid-template-areas: 1fr 1fr;
+}
+
 .profile-head{
     @include grid-self();
-    grid-template-columns: 1fr 1fr 2fr 2fr;
+    grid-template-columns: 1fr 1fr 2fr;
     grid-template-rows: 1fr 2fr;
 }

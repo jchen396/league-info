@@ -27,13 +27,14 @@ export default function Search({search}) { //get search ID from prop
     const sumId = sumArray[0] && sumArray[0].id // encrypted summoner id
     const accId = sumArray[0] && sumArray[0].accountId //encrypted account id 
     return(
-        <div>
+        <div classNAme="result-container">
             <div className="profile-head">
                 <img src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${sumIcon}.png`} height="150" width="150" alt="player-icon"/>
                 <div className="player-name">
                     <h1>{sumName}</h1>
                     <h4>Level: {sumLevel}</h4>
             </div>
+            <br/>
             <div className="profile-body">
                 <Info sumId={sumId} api={apiKey} />
                 <Matches accId={accId} api={apiKey} />
