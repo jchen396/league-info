@@ -19,21 +19,24 @@ export default function Info({sumId, api}) {
     // LEAGUE RANKING INFORMATION
     const leagueInfo = info[1]
     const leagueTier = info[1] && info[1].tier
+    const leagueRank = leagueTier ? leagueTier.toString().charAt(0) + leagueTier.toString().toLowerCase().slice(1) : null
     const leagueDiv = info[1] && info[1].rank
     const leagueLP = info[1] && info[1].leaguePoints
     const leagueWins = info[1] && info[1].wins
     const leagueLosses = info[1] && info[1].losses
-
     // TFT RANKING INFORMATION
     const tftRank = info[0]
 
 
+    const iconDir = require.context('../../css/rank_icons/')
+    const icon = leagueTier ? (iconDir(`./Emblem_${leagueRank}.png`)) : null
+    
     console.log(leagueInfo)
     return(
         <div>
             <div className="ranking">
-                <img src="" alt="rank-icon"/>
-                <h3>{`${leagueTier} ${leagueDiv}`}</h3>
+                <img src={icon} alt="rank-icon" height="300" width="300"/>
+                <h3>{`${leagueRank} ${leagueDiv}`}</h3>
                 <h4>{leagueLP} LP</h4>
             </div>
             <div className="rank-stats">
