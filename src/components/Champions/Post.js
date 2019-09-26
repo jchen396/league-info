@@ -7,7 +7,7 @@ export default function Post({match}) {
     const [info, setInfo] = useState([])
     useEffect(() => {
         const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
-        axios.get(`${proxy}http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion/${match.params.post_id}.json `) //get data from league api
+        axios.get(`${proxy}http://ddragon.leagueoflegends.com/cdn/9.19.1/data/en_US/champion/${match.params.post_id}.json `) //get data from league api
             .then(res => {
                 setInfo(res.data.data) //retrieve data from api
             })
@@ -44,7 +44,7 @@ export default function Post({match}) {
                         {champ.spells.map((spell) => {
                             return(
                                 <div className="spell-info" key={champ.key}>
-                                    <img src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/${spell.id}.png`} alt={spell.id}/>
+                                    <img src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/${spell.id}.png`} alt={spell.id}/>
                                     <div className="spell-text">
                                         <h5>{spell.name}</h5>
                                         <div className="spell-body">

@@ -2,22 +2,21 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-export default function Matches({appId, api}) {
+export default function Matches({accId, api}) {
     const [data, setData] = useState([])
     useEffect(() => {
         const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
-        axios.get(`${proxy}https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${appId}?api_key=${api}`)
+        axios.get(`${proxy}https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accId}?api_key=${api}`)
         .then(res => {
             setData(res)
         })
         .catch(e => {
             console.log(e.response)
         })
-    }, [appId, api])
-    console.log(data)
+    }, [accId, api])
     return(
         <div>
-            {appId}
+            {accId}
         </div>
     );
 }

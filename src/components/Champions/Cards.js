@@ -8,7 +8,7 @@ export default function Cards({search}) {
     useEffect(() => {
         let cancel
         const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
-        axios.get(`${proxy}http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json `, { //get data from league api
+        axios.get(`${proxy}http://ddragon.leagueoflegends.com/cdn/9.19.1/data/en_US/champion.json `, { //get data from league api
             cancelToken: new axios.CancelToken( c => {
                 cancel = c
             })
