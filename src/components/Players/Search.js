@@ -8,7 +8,7 @@ import Matches from './Matches'
 export default function Search({search}) { //get search ID from prop
     const [summoner, setSummoner] = useState([]); // get player database
     const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
-    const apiKey = "RGAPI-7f17f630-f9ae-42d4-b984-334b04bdd060" // API key acquired from riot games dev site
+    const apiKey = "RGAPI-29ab482a-c23d-4938-871b-4074931f5132" // API key acquired from riot games dev site
     useEffect(() => {
         axios.get(`${proxy}https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${search}?api_key=${apiKey}`)
         .then((res) => { //get results from RIOT API according to the summoner name submitted
@@ -27,18 +27,17 @@ export default function Search({search}) { //get search ID from prop
     const accId = sumArray[0] && sumArray[0].accountId //encrypted account id 
     
     const profileDisplay = sumName ? 
-        <div>
+        <div className="result-container">
             <div className="profile-head">
-            <img src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${sumIcon}.png`} height="150" width="150" alt="player-icon"/>
-            <div className="player-name">
-                <h1>{sumName}</h1>
-                <h4>Level: {sumLevel}</h4>
+                <img src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${sumIcon}.png`} height="150" width="150" alt="player-icon"/>
+                <div className="player-name">
+                    <h1>{sumName}</h1>
+                    <h4>Level {sumLevel}</h4>
+                </div>
             </div>
-            </div>
-            <br/>
+            <Matches accId={accId} api={apiKey} />
             <div className="profile-body">
                 <Info sumId={sumId} api={apiKey} />
-                <Matches accId={accId} api={apiKey} />
             </div>
         </div> 
         : 
@@ -46,7 +45,7 @@ export default function Search({search}) { //get search ID from prop
             <h5>No results</h5>
         </div>
     return(
-        <div className="result-container">
+        <div>
             {profileDisplay}
         </div>
     );

@@ -17,7 +17,6 @@ export default function Info({sumId, api}) {
     }, [sumId, api])
 
     // LEAGUE RANKING INFORMATION
-    const leagueInfo = info[1]
     const leagueTier = info[1] && info[1].tier
     const leagueRank = leagueTier ? leagueTier.toString().charAt(0) + leagueTier.toString().toLowerCase().slice(1) : null
     const leagueDiv = info[1] && info[1].rank

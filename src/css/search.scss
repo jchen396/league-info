@@ -6,13 +6,21 @@
     justify-items: center;
 }
 
+// HEADER (USERNAME, ICON, LEVEL)
 .result-container{
     @include grid-self();
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "head match"
+    "body match";
 }
 
 .profile-head{
     @include grid-self();
-    grid-template-columns: 1fr 1fr 5fr;
+    justify-items: stretch;
+    grid-area: head;
+    grid-template-columns: 1fr 1fr;
     grid-column-gap: 2em;
 }
 
@@ -28,6 +36,48 @@
     border: rgb(133, 133, 133) solid 2px;
 }
 
+.profile-head input::placeholder{
+    opacity: 0.3;
+}
+
+// BODY (data)
+.profile-body{
+    @include grid-self();
+    grid-template-columns: 1fr 1fr;
+    grid-area: body;
+}
+
+// MATCH
+.match-container{
+    grid-area: 1 /2;;
+}
+
+.match-container input{
+    width: 40em !important;
+}
+
+.match-container input[type=text]:valid {
+    border-bottom: 1px solid rgba(252, 255, 88, 0.3);
+    box-shadow: 0 1px 0 0 rgba(255, 174, 174, 0.3);
+}
+
+.match-container input:focus {
+    border-bottom: 1px solid rgb(252, 255, 88) !important;
+    box-shadow: 0 1px 0 0 rgb(255, 174, 174) !important;
+}
+
+.match-post{
+    height: 5h;
+    position: absolute;
+    @include grid-self();
+    border: 1px rgba(255, 255, 255, 0) solid;
+}
+
+.match-post:hover{
+    border: 1px rgb(0, 255, 255) solid;
+}
+
+// ERROR (if search query is empty)
 .error{
     -webkit-text-fill-color: white;
     -webkit-text-stroke-color: rgb(255, 146, 146);
@@ -40,4 +90,17 @@
 
 .erorr h5{
     translate: transformY(30%);
+}
+
+@media screen and (max-width: 740px){
+    .profile-head h1{
+        font-size: 6vw;
+    }
+    .profile-head img:first-child{
+        width: 25vw;
+        height: 13vh;
+    }
+    .profile-head h4{
+        font-size: 4vw;
+    }
 }
