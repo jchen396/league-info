@@ -18,33 +18,36 @@ export default function Search({search}) { //get search ID from prop
             console.log(e.response)
         })
     }, [search])
-    console.log(summoner)
     const sumArray = Object.values(summoner) //turn summoner into an array
-    const sumName = sumArray[0] && sumArray[0].name // returns name property from API
-    const sumLevel = sumArray[0] && sumArray[0].summonerLevel
-    const sumIcon = sumArray[0] && sumArray[0].profileIconId
+    const sumName = sumArray[0] && sumArray[0].name // returns NAME property from API
+    const sumLevel = sumArray[0] && sumArray[0].summonerLevel // LEVEL
+    const sumIcon = sumArray[0] && sumArray[0].profileIconId // ICON
 
     const sumId = sumArray[0] && sumArray[0].id // encrypted summoner id
     const accId = sumArray[0] && sumArray[0].accountId //encrypted account id 
     
-    const dataDisplay = search ? <div className="profile-head">
-    <img src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${sumIcon}.png`} height="150" width="150" alt="player-icon"/>
-    <div className="player-name">
-        <h1>{sumName}</h1>
-        <h4>Level: {sumLevel}</h4>
-</div>
-<br/>
-<div className="profile-body">
-    <Info sumId={sumId} api={apiKey} />
-    <Matches accId={accId} api={apiKey} />
-</div>
-</div> : 
-    <div className="error">
-        No results
-    </div>
+    const profileDisplay = sumName ? 
+        <div>
+            <div className="profile-head">
+            <img src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${sumIcon}.png`} height="150" width="150" alt="player-icon"/>
+            <div className="player-name">
+                <h1>{sumName}</h1>
+                <h4>Level: {sumLevel}</h4>
+            </div>
+            </div>
+            <br/>
+            <div className="profile-body">
+                <Info sumId={sumId} api={apiKey} />
+                <Matches accId={accId} api={apiKey} />
+            </div>
+        </div> 
+        : 
+        <div className="error">
+            <h5>No results</h5>
+        </div>
     return(
-        <div classNAme="result-container">
-            {dataDisplay}
+        <div className="result-container">
+            {profileDisplay}
         </div>
     );
 }

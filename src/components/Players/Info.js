@@ -29,19 +29,35 @@ export default function Info({sumId, api}) {
 
 
     const iconDir = require.context('../../css/rank_icons/')
-    const icon = leagueTier ? (iconDir(`./Emblem_${leagueRank}.png`)) : null
-    
-    console.log(leagueInfo)
-    return(
+    const icon = leagueTier ? (iconDir(`./Emblem_${leagueRank}.png`)) : (iconDir(`./Emblem_null.png`))
+
+    const dataDisplay = leagueRank !== null ? 
         <div>
             <div className="ranking">
-                <img src={icon} alt="rank-icon" height="300" width="300"/>
+                <img src={icon} alt="rank-icon" height="270" width="270"/>
                 <h3>{`${leagueRank} ${leagueDiv}`}</h3>
                 <h4>{leagueLP} LP</h4>
             </div>
             <div className="rank-stats">
-                <h5>Wins: {leagueWins} Losses : {leagueLosses}</h5>
+                <h5>Wins: {leagueWins}</h5> 
+                <h5>Losses : {leagueLosses}</h5>
             </div>
+        </div>
+        :
+        <div>
+            <div className="ranking">
+                <img src={icon} alt="rank-icon" height="270" width="270"/>
+                <h3>Unranked</h3>
+                <h4>0 LP</h4>
+            </div>
+            <div className="rank-stats">
+                <h5>Wins: 0</h5> 
+                <h5>Losses: 0{leagueLosses}</h5>
+            </div>
+        </div>
+    return(
+        <div>
+            {dataDisplay}
         </div>
     );
 }

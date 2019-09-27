@@ -1,16 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
 @mixin grid-self{
     display:grid;
     align-items: center;
-    justify-items: start;
+    justify-items: center;
 }
 
 .result-container{
     @include grid-self();
-    grid-template-areas: 1fr 1fr;
 }
 
 .profile-head{
     @include grid-self();
-    grid-template-columns: 1fr 1fr 2fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr 1fr 5fr;
+    grid-column-gap: 2em;
+}
+
+.profile-head h1{
+    font-family: 'Ubuntu', sans-serif;
+    -webkit-text-stroke: rgba(147, 147, 147, 0.5);
+    -webkit-text-fill-color: rgb(43, 43, 159);
+    -webkit-text-stroke-width: 0.5px;
+}
+
+.profile-head img:first-child{
+    border-radius: 10px;
+    border: rgb(133, 133, 133) solid 2px;
+}
+
+.error{
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-color: rgb(255, 146, 146);
+    -webkit-text-stroke-width: 0.3px;
+    height: 40vh;
+    font-family: italic;
+    text-align: center;
+    align-items: center;
+}
+
+.erorr h5{
+    translate: transformY(30%);
 }

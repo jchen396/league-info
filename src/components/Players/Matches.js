@@ -14,6 +14,7 @@ export default function Matches({accId, api}) {
             console.log(e.response)
         })
     }, [accId, api])
+    console.log(data)
     return(
         <div>
         </div>
