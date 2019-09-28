@@ -17,15 +17,19 @@ export default function Matches({accId, api}) {
             console.log(e.response)
         })
     }, [accId, api])
-    console.log(data)
+    const dataArray = Object.values(data) // Object ->  Array
+    const matchArray = dataArray[0] && dataArray[0].matches
+    const gameIds = matchArray ? matchArray.slice(0,20).map((match) => {
+        return match.gameId
+    }, ) : null
     return(
         <div className="match-container">
             <form action="" onSubmit={e => {
                     e.preventDefault()
                     setChamp(inputRef.current.value)}} >
-                    <input className="center" spellCheck="false" type="text" placeholder="Enter Champion Name" ref={inputRef}/>
+                    <input spellCheck="false" type="text" placeholder="Enter Champion Name" ref={inputRef}/>
                 </form>
-            <Results accId={accId} api={api} champ={champ}/>
+            <Results gameIds={gameIds} api={api} champ={champ}/>
         </div>
     );
 }

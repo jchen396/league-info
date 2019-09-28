@@ -2,35 +2,23 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-export default function Results({accId, api, champ}) {
+export default function Results({gameIds, api, champ}) {
     const [match, setMatch] = useState([])
-
+    const matchIds = gameIds
     useEffect(() => {
         const proxy = 'https://cors-anywhere.herokuapp.com/' //proxy incase local server does not work
-        axios.get(`${proxy}https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accId}?api_key=${api}`)
+        axios.get(`${proxy}https://na1.api.riotgames.com/lol/match/v4/matches/${gameIds}?api_key=${api}`)
         .then((res) => {
-            setMatch(res.data)
+            setMatch(res)
         })
         .catch((e) =>{
             console.log(e.response)
         })
     }, [])
-
-    const matchArray = Object.values(match) // Object ->  Array
-    const matchList = matchArray ? matchArray.map((match) => {
-        console.log(match.lane)
-        return(
-            <div className="match-post" key={match.gameId}>
-                <div className="match-lane">
-                    {match.lane}
-                </div>
-            </div>
-        )
-        }) :
-        <div>hi</div>
+    console.log(matchIds)
     return(
-        <div>
-            {matchList}
+        <div className="match-list">
+            
         </div>
     )
 }
