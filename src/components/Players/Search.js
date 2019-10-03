@@ -8,7 +8,7 @@ import Matches from './Matches'
 export default function Search({search}) { //get search ID from prop
     const [summoner, setSummoner] = useState([]); // get player database
     const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
-    const apiKey = "RGAPI-d444b80a-01ac-452d-9d8d-056295b23d82" // API key acquired from riot games dev site
+    const apiKey = "RGAPI-25d6bbbe-3420-46b8-8170-1914f39bbc81" // API key acquired from riot games dev site
     useEffect(() => {
         axios.get(`${proxy}https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${search}?api_key=${apiKey}`)
         .then((res) => { //get results from RIOT API according to the summoner name submitted
@@ -35,7 +35,7 @@ export default function Search({search}) { //get search ID from prop
                     <h4>Level {sumLevel}</h4>
                 </div>
             </div>
-            <Matches accId={accId} api={apiKey} />
+            <Matches search={search} accId={accId} api={apiKey} sumName={sumName}/>
             <div className="profile-body">
                 <Info sumId={sumId} api={apiKey} />
             </div>
@@ -50,4 +50,3 @@ export default function Search({search}) { //get search ID from prop
         </div>
     );
 }
-

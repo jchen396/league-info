@@ -3,7 +3,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
 import Results from './Results.js'
 
-export default function Matches({accId, api}) {
+export default function Matches({search, accId, api, sumName}) {
     const inputRef = useRef()
     const [data, setData] = useState([])
     const [champ, setChamp] = useState([])
@@ -19,7 +19,7 @@ export default function Matches({accId, api}) {
     }, [accId, api])
     const dataArray = Object.values(data) // Object ->  Array
     const matchArray = dataArray[0] && dataArray[0].matches
-    const matchIds = matchArray ? matchArray.slice(0,20).map((match) => {
+    const matchIds = matchArray ? matchArray.slice(0,10).map((match) => {
         return match.gameId
     }) : null
     return(
@@ -29,7 +29,7 @@ export default function Matches({accId, api}) {
                     setChamp(inputRef.current.value)}} >
                     <input spellCheck="false" type="text" placeholder="Enter Champion Name" ref={inputRef}/>
                 </form>
-            <Results matchIds={matchIds} api={api} champ={champ}/>
+            <Results search={search} matchIds={matchIds} api={api} champ={champ} sumName={sumName}/>
         </div>
     );
 }
