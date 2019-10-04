@@ -26,7 +26,7 @@ export default function Results({search, matchIds, api, champ, sumName}) {
             })
             return () => cancel
         }
-    }, [matchIds])
+    }, [matchIds, sumName])
 
     useEffect(() => {
         setTemp([...main, match])
@@ -72,10 +72,10 @@ export default function Results({search, matchIds, api, champ, sumName}) {
         return(
             <div className="match-post" key={id}>
                 <Icon champId={champId} api={api} />
+                <h4>{stats}</h4>
                 <div className="match-body">
                     <h4>{mode}</h4>
                     <h5>{time}</h5>
-                    <p>{stats}</p>
                 </div>
             </div>
         )

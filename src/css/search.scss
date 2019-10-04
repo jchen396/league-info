@@ -78,6 +78,7 @@
     height: 5h;
     @include grid-self();
     border: 1px rgba(255, 255, 255, 0) solid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .match-post::-webkit-scrollbar{
@@ -96,12 +97,27 @@
 }
 
 .match-post::-webkit-scrollbar-thumb:hover {
-    background: rgba(147, 147, 147, 0.8);
+    background: rgba(0, 38, 255, 0.8);
 }
 
 .match-post:hover{
     border: 1px rgb(0, 255, 255) solid;
 }
+
+.match-post h4{
+    color: rgb(136, 68, 200);
+}
+
+.match-body h5,
+.match-body h4{
+    color: rgba(254, 254, 255, 0.5);
+}
+
+.champ-icon h6{
+    text-align: center;
+    color: white;
+}
+
 
 // ERROR (if search query is empty)
 .error{
@@ -133,6 +149,9 @@
     .profile-body img{
         max-width: 100%;
         min-width: 50%;
+    }
+    .match-post{
+        font-size: 14;
     }
 
 }
