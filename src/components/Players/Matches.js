@@ -1,10 +1,9 @@
 // -> Search.js -> Player.js -> App.js
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Results from './Results.js'
 
-export default function Matches({search, accId, api, sumName}) {
-    const inputRef = useRef()
+export default function Matches({accId, api, sumName}) {
     const [data, setData] = useState([])
     const [champ, setChamp] = useState([])
     useEffect(() => {
@@ -16,7 +15,7 @@ export default function Matches({search, accId, api, sumName}) {
         .catch(e => {
             console.log(e.response)
         })
-    }, [accId, api, sumName])
+    }, [accId, sumName])
     const dataArray = Object.values(data) // Object ->  Array
     const matchArray = dataArray[0] && dataArray[0].matches
     const matchIds = matchArray ? matchArray.slice(0,10).map((match) => {
@@ -24,11 +23,12 @@ export default function Matches({search, accId, api, sumName}) {
     }) : null
     return(
         <div className="match-container">
-            <form action="" onChange={e => {
-                setChamp(inputRef.current.value)}} >
-                <input spellCheck="false" type="text" placeholder="Enter Champion Name" ref={inputRef}/>
+            <form action="" onSubmit={e => {
+                e.preventDefault()
+                }} >
+                <input spellCheck="false" type="text" placeholder="Enter Champion Name" onChange={e => setChamp(e.target.value)}/>
             </form>
-            <Results search={search} matchIds={matchIds} api={api} champ={champ} sumName={sumName}/>
+            <Results matchIds={matchIds} api={api} champ={champ} sumName={sumName}/>
         </div>
     );
 }

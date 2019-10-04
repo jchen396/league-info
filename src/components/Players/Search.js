@@ -25,7 +25,6 @@ export default function Search({search}) { //get search ID from prop
 
     const sumId = sumArray[0] && sumArray[0].id // encrypted summoner id
     const accId = sumArray[0] && sumArray[0].accountId //encrypted account id 
-    
     const profileDisplay = sumName ? 
         <div className="result-container">
             <div className="profile-head">
@@ -38,7 +37,7 @@ export default function Search({search}) { //get search ID from prop
             <div className="profile-body">
                 <Info sumId={sumId} api={apiKey} />
             </div>
-            <Matches search={search} accId={accId} api={apiKey} sumName={sumName}/>
+            <Matches accId={accId} api={apiKey} sumName={sumName}/>
         </div> 
         : 
         <div className="error">

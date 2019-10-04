@@ -105,11 +105,17 @@ div ::-webkit-scrollbar-thumb:hover {
 
 .match-post h4{
     color: rgb(136, 68, 200);
+    font-size: 25px;
 }
 
 .match-body h5,
 .match-body h4{
     color: rgba(254, 254, 255, 0.5);
+}
+
+.champ-icon img{
+    border: black 1px solid;
+    border-radius: 100px;
 }
 
 .champ-icon h6{
@@ -154,5 +160,8 @@ div ::-webkit-scrollbar-thumb:hover {
 @media screen and (max-width: 1000px){
     .match-post h4{
         font-size: 20px;
+    }
+    .champ-icon h6{
+        display:none;
     }
 }

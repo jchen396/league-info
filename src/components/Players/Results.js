@@ -2,11 +2,12 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Icon from './Icon.js'
-    
-export default function Results({search, matchIds, api, champ, sumName}) {
+
+export default function Results({matchIds, champ, api, sumName}) {
     const [match, setMatch] = useState([])
     const [temp, setTemp] = useState([])
     const [main, setMain] = useState([])
+    const [name, setName] = useState([])
     useEffect(() => { //API fetching using axios
         let cancel
         const proxy = 'https://cors-anywhere.herokuapp.com/' //proxy incase local server does not work
@@ -38,8 +39,28 @@ export default function Results({search, matchIds, api, champ, sumName}) {
         return() => setTemp([])
     },[match])
 
+    useEffect(() => {
+        let cancel
+        const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
+        axios.get(`${proxy}http://ddragon.leagueoflegends.com/cdn/9.19.1/data/en_US/champion.json`, 
+        {cancelToken: new axios.CancelToken(c =>{
+            cancel = c
+        })}) //get data from league api
+        .then((res) => {
+            setName(res.data.data)
+            // console.log(res)
+        })
+        .catch((e) =>{
+            console.log(e.response)
+        })
+        return () => cancel
+    }, [])
+
+
     const mainArray = Object.values(main)
-    const matchList = mainArray.length === 11 ? mainArray.slice(1, 11).map((game, id) => { //loop through each object and output
+    console.log((mainArray.length-1) % 10 === 0 )
+    /* MAPPING THROUGH MATCHES */
+    const matchList = (mainArray.length-1) % 10 === 0 ? mainArray.slice(1, 11).map((game, id) => { //loop through each object and output
         const data = game[0] && game[0].data // access to game[0].data decrease repitiveness in code
         const mode = data && game[0].data.gameMode // GAME MODE
         const duration = data && game[0].data.gameDuration //unformated duration of game
@@ -70,8 +91,22 @@ export default function Results({search, matchIds, api, champ, sumName}) {
         const outcomeColor = statsAccess.win ? "green-text" : "red-text"
         const outcome = statsAccess.win ? "VICTORY" : "DEFEAT"
 
+        /* Converting champ id to string name */
+        const nameArray = Object.values(name)
+        const champName = nameArray.map((champ) => { //CURRENT CHAMPION SELECT
+            if(Number(champ.key) === champId){
+                return champ.name
+            }
+        }).filter((champ) => {
+            return champ !== undefined
+        })
+
+        const re = new RegExp(champ, "i")
+        const nameMatch = String(champName).match(re) ? "true" : "false"
+
+
         return(
-            <div className="match-post" key={id}>
+            <div className={`match-post ${nameMatch}`} key={id}>
                 <Icon champId={champId} api={api}/>
                 <div>
                     <h4 className={outcomeColor}>{outcome}</h4>
