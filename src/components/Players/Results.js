@@ -49,14 +49,17 @@ export default function Results({search, matchIds, api, champ, sumName}) {
 
         const player = data && game[0].data.participants //get individual player data
         const matchPlayer = data && game[0].data.participantIdentities
-        const champId = player && game[0].data.participants[id].championId //champion Id
 
-        // const getChamp = matchPlayer.map((player) => {
-        //     const matchName = player.player && player.player.summonerName
-        //     if(matchName === sumName){
-        //         return player.player && player.player.id
-        //     }
-        // })
+        const getId = matchPlayer.map((summoner) => {
+            const matchName = summoner.player && summoner.player.summonerName
+            if(matchName === sumName){
+                console.log(matchName, sumName, summoner.participantId)
+                return summoner.participantId
+            }
+        }).filter((player) => {
+            return player !== undefined
+        })
+        const champId = player && game[0].data.participants[getId[0]-1].championId //champion Id
 
         console.log(data)
         return(
