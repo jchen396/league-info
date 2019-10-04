@@ -59,15 +59,23 @@ export default function Results({search, matchIds, api, champ, sumName}) {
         }).filter((player) => {
             return player !== undefined
         })
-        const champId = player && game[0].data.participants[getId[0]-1].championId //champion Id
 
-        console.log(data)
+        /* Creating match statistics */
+        const champId = player && game[0].data.participants[getId[0]-1].championId //champion Id
+        const statsAccess = player && game[0].data.participants[getId[0]-1].stats //get stats
+        const deaths = statsAccess.deaths
+        const assists = statsAccess.assists
+        const kills = statsAccess.kills
+        const stats = `${kills}/${deaths}/${assists}`
+
+        console.log(player)
         return(
             <div className="match-post" key={id}>
                 <Icon champId={champId} api={api} />
                 <div className="match-body">
                     <h4>{mode}</h4>
-                    <p>{time}</p>
+                    <h5>{time}</h5>
+                    <p>{stats}</p>
                 </div>
             </div>
         )
