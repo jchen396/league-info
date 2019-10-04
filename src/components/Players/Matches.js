@@ -24,11 +24,10 @@ export default function Matches({search, accId, api, sumName}) {
     }) : null
     return(
         <div className="match-container">
-            <form action="" onSubmit={e => {
-                    e.preventDefault()
-                    setChamp(inputRef.current.value)}} >
-                    <input spellCheck="false" type="text" placeholder="Enter Champion Name" ref={inputRef}/>
-                </form>
+            <form action="" onChange={e => {
+                setChamp(inputRef.current.value)}} >
+                <input spellCheck="false" type="text" placeholder="Enter Champion Name" ref={inputRef}/>
+            </form>
             <Results search={search} matchIds={matchIds} api={api} champ={champ} sumName={sumName}/>
         </div>
     );

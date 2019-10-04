@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Icon from './Icon.js'
-
+    
 export default function Results({search, matchIds, api, champ, sumName}) {
     const [match, setMatch] = useState([])
     const [temp, setTemp] = useState([])
@@ -53,7 +53,6 @@ export default function Results({search, matchIds, api, champ, sumName}) {
         const getId = matchPlayer.map((summoner) => {
             const matchName = summoner.player && summoner.player.summonerName
             if(matchName === sumName){
-                console.log(matchName, sumName, summoner.participantId)
                 return summoner.participantId
             }
         }).filter((player) => {
@@ -68,11 +67,16 @@ export default function Results({search, matchIds, api, champ, sumName}) {
         const kills = statsAccess.kills
         const stats = `${kills}/${deaths}/${assists}`
 
-        console.log(player)
+        const outcomeColor = statsAccess.win ? "green-text" : "red-text"
+        const outcome = statsAccess.win ? "VICTORY" : "DEFEAT"
+
         return(
             <div className="match-post" key={id}>
-                <Icon champId={champId} api={api} />
-                <h4>{stats}</h4>
+                <Icon champId={champId} api={api}/>
+                <div>
+                    <h4 className={outcomeColor}>{outcome}</h4>
+                    <h4 className={outcomeColor}>{stats}</h4>
+                </div>
                 <div className="match-body">
                     <h4>{mode}</h4>
                     <h5>{time}</h5>

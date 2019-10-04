@@ -81,23 +81,22 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.match-post::-webkit-scrollbar{
-    width: 25px;
+div ::-webkit-scrollbar{
+    width: 20px;
+}
+div ::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 5px rgb(126, 91, 190);
+    background: rgba(89, 0, 255, 0);
+    border-radius: 3px;
 }
 
-.match-post::-webkit-scrollbar-track{
-    box-shadow: inset 0 0 5px rgb(147, 147, 147);
-    background: rgba(125, 91, 190, 0.0);
-    border-radius: 20px;
+div ::-webkit-scrollbar-thumb{
+    background: rgba(81, 30, 176, 0.5);
+    border-radius: 3px;
 }
 
-.match-post::-webkit-scrollbar-thumb{
-    background: rgba(147, 147, 147, 0.5);
-    border-radius: 10px;
-}
-
-.match-post::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 38, 255, 0.8);
+div ::-webkit-scrollbar-thumb:hover {
+    background: rgb(81, 30, 176);
 }
 
 .match-post:hover{
@@ -135,23 +134,25 @@
 }
 
 @media screen and (max-width: 740px){
-    .profile-head h1{
-        font-size: 5vw;
+    .result-container{
+       display: flex;
+       flex-direction: column;
+       text-align: center;
     }
-    .profile-head img:first-child{
-        width: 25vw;
-        height: 13vh;
+    .profile-body{
+        @include grid-self();
+        grid-template-columns: 1fr;
     }
-    .profile-head h4{
-        font-size: 4vw;
+    .match-container{
+        margin: 5em;
     }
-    
-    .profile-body img{
-        max-width: 100%;
-        min-width: 50%;
+    .match-container,
+    .match-list{
+        width: 75vw;
     }
-    .match-post{
-        font-size: 14;
+}
+@media screen and (max-width: 1000px){
+    .match-post h4{
+        font-size: 20px;
     }
-
 }

@@ -35,10 +35,10 @@ export default function Search({search}) { //get search ID from prop
                     <h4>Level {sumLevel}</h4>
                 </div>
             </div>
-            <Matches search={search} accId={accId} api={apiKey} sumName={sumName}/>
             <div className="profile-body">
                 <Info sumId={sumId} api={apiKey} />
             </div>
+            <Matches search={search} accId={accId} api={apiKey} sumName={sumName}/>
         </div> 
         : 
         <div className="error">

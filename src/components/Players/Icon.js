@@ -23,7 +23,6 @@ export default function Icon({champId, api}) {
     const dataArray = Object.values(data)
     const champImage = dataArray.map((champ, id) => {
         if(Number(champ.key) === champId){
-            console.log(champ.name, champId, champ.key)
             return(
                 <div className="champ-icon" key={id}>
                     <img src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champ.id}.png?api_key=${api}`} alt={`${champ.name}-icon`}
