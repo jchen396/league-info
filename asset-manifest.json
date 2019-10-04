@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/league-info/static/css/main.ae95a4c4.chunk.css",
+    "main.js": "/league-info/static/js/main.b6a0a161.chunk.js",
+    "main.js.map": "/league-info/static/js/main.b6a0a161.chunk.js.map",
+    "runtime~main.js": "/league-info/static/js/runtime~main.21a7e22f.js",
+    "runtime~main.js.map": "/league-info/static/js/runtime~main.21a7e22f.js.map",
+    "static/js/2.33506e3c.chunk.js": "/league-info/static/js/2.33506e3c.chunk.js",
+    "static/js/2.33506e3c.chunk.js.map": "/league-info/static/js/2.33506e3c.chunk.js.map",
+    "index.html": "/league-info/index.html",
+    "precache-manifest.1335b380af358b04115df611515e5646.js": "/league-info/precache-manifest.1335b380af358b04115df611515e5646.js",
+    "service-worker.js": "/league-info/service-worker.js",
+    "static/css/main.ae95a4c4.chunk.css.map": "/league-info/static/css/main.ae95a4c4.chunk.css.map",
+    "static/media/Emblem_Bronze.png": "/league-info/static/media/Emblem_Bronze.39964f7f.png",
+    "static/media/Emblem_Challenger.png": "/league-info/static/media/Emblem_Challenger.4aaf9754.png",
+    "static/media/Emblem_Diamond.png": "/league-info/static/media/Emblem_Diamond.c9018327.png",
+    "static/media/Emblem_Gold.png": "/league-info/static/media/Emblem_Gold.19be519b.png",
+    "static/media/Emblem_Grandmaster.png": "/league-info/static/media/Emblem_Grandmaster.d0d4b62f.png",
+    "static/media/Emblem_Iron.png": "/league-info/static/media/Emblem_Iron.1a6b4669.png",
+    "static/media/Emblem_Master.png": "/league-info/static/media/Emblem_Master.4156f1c1.png",
+    "static/media/Emblem_Platinum.png": "/league-info/static/media/Emblem_Platinum.86ac5170.png",
+    "static/media/Emblem_Silver.png": "/league-info/static/media/Emblem_Silver.3a4aa1a5.png",
+    "static/media/Emblem_null.png": "/league-info/static/media/Emblem_null.12ca6a07.png"
+  }
+}
