@@ -75,6 +75,8 @@ export default function Results({matchIds, champ, api, sumName}) {
             const matchName = summoner.player && summoner.player.summonerName
             if(matchName === sumName){
                 return summoner.participantId
+            }else{
+                return null
             }
         }).filter((player) => {
             return player !== undefined
@@ -96,6 +98,8 @@ export default function Results({matchIds, champ, api, sumName}) {
         const champName = nameArray.map((champ) => { //CURRENT CHAMPION SELECT
             if(Number(champ.key) === champId){
                 return champ.name
+            }else{
+                return null
             }
         }).filter((champ) => {
             return champ !== undefined

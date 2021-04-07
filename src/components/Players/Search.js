@@ -8,14 +8,14 @@ import Matches from './Matches'
 export default function Search({search}) { //get search ID from prop
     const [summoner, setSummoner] = useState([]); // get player database
     const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
-    const apiKey = "RGAPI-1edfefd3-f44c-404e-9005-88d7ed6521ec" // API key acquired from riot games dev site
+    const apiKey = "RGAPI-740a65b1-0ab0-40b5-9e24-84900f817e83" // API key acquired from riot games dev site
     useEffect(() => {
         axios.get(`${proxy}https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${search}?api_key=${apiKey}`)
         .then((res) => { //get results from RIOT API according to the summoner name submitted
             setSummoner(res)
         })
         .catch(e => {
-            console.log(e.response)
+            console.log(e.err)
         })
     }, [search])
     const sumArray = Object.values(summoner) //turn summoner into an array

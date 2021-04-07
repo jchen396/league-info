@@ -15,7 +15,7 @@ export default function Matches({accId, api, sumName}) {
         .catch(e => {
             console.log(e.response)
         })
-    }, [accId, sumName])
+    }, [accId, sumName, api])
     const dataArray = Object.values(data) // Object ->  Array
     const matchArray = dataArray[0] && dataArray[0].matches
     const matchIds = matchArray ? matchArray.slice(0,10).map((match) => {

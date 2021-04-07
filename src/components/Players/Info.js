@@ -23,9 +23,6 @@ export default function Info({sumId, api}) {
     const leagueLP = info[1] && info[1].leaguePoints
     const leagueWins = info[1] && info[1].wins
     const leagueLosses = info[1] && info[1].losses
-    // TFT RANKING INFORMATION
-    const tftRank = info[0]
-
 
     const iconDir = require.context('../../css/rank_icons/')
     const icon = leagueTier ? (iconDir(`./Emblem_${leagueRank}.png`)) : (iconDir(`./Emblem_null.png`))

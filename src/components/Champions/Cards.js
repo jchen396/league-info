@@ -35,6 +35,8 @@ export default function Cards({search}) {
                     </Link>
                 </div>
             )
+        }else{
+            return null
         }
     }) : (
         champArray.map((champ) => {

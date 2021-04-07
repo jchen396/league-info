@@ -30,6 +30,8 @@ export default function Icon({champId, api}) {
                     <h6>{champ.name}</h6>
                 </div>
             )
+        }else{
+            return null
         }
     })
     return(
