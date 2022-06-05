@@ -5,11 +5,14 @@ import "../../css/search.scss";
 import Info from "./Info";
 import Matches from "./Matches";
 
+require("dotenv").config();
+
 export default function Search({ search }) {
     //get search ID from prop
     const [summoner, setSummoner] = useState([]); // get player database
     const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
-    const apiKey = "RGAPI-a7f271c0-20e0-4481-b673-6e2d41cdaa52"; // API key acquired from riot games dev site
+    const apiKey = process.env.REACT_APP_LEAGUE_API; // API key acquired from riot games dev site
+    console.log(process.env.REACT_APP_LEAGUE_API);
     useEffect(() => {
         axios
             .get(
