@@ -11,16 +11,15 @@ export default function NavBar() {
     return (
         <nav className="nav-wrapper">
             <div className="container">
-                <div className="brand-logo">LeagueInfo</div>
+                <div className="brand-logo">
+                    <NavLink to="/">LeagueInfo</NavLink>
+                </div>
                 <ul className={classList}>
                     <li onClick={() => setActive(false)}>
-                        <NavLink to="/">Champions</NavLink>
+                        <NavLink to="/champions">Champions</NavLink>
                     </li>
                     <li onClick={() => setActive(false)}>
                         <NavLink to="/players">Players</NavLink>
-                    </li>
-                    <li onClick={() => setActive(false)}>
-                        <NavLink to="/about">About</NavLink>
                     </li>
                 </ul>
                 <div

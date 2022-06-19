@@ -12,7 +12,6 @@ export default function Search({ search }) {
     const [summoner, setSummoner] = useState([]); // get player database
     const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
     const apiKey = process.env.REACT_APP_LEAGUE_API; // API key acquired from riot games dev site
-    console.log(process.env.REACT_APP_LEAGUE_API);
     useEffect(() => {
         axios
             .get(
