@@ -23,7 +23,7 @@ export default function Search({ search }) {
             })
             .catch((e) => {
                 console.log(e.err);
-            });
+            }, [summoner, apiKey]);
     }, [search]);
     const sumArray = Object.values(summoner); //turn summoner into an array
     const sumName = sumArray[0] && sumArray[0].name; // returns NAME property from API
@@ -31,7 +31,7 @@ export default function Search({ search }) {
     const sumIcon = sumArray[0] && sumArray[0].profileIconId; // ICON
 
     const sumId = sumArray[0] && sumArray[0].id; // encrypted summoner id
-    const accId = sumArray[0] && sumArray[0].accountId; //encrypted account id
+    const accId = sumArray[0] && sumArray[0].puuid; //encrypted account id
     const profileDisplay = sumName ? (
         <div className="result-container">
             <div className="profile-head">

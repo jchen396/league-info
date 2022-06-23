@@ -20,15 +20,15 @@ export default function Info({ sumId, api }) {
     }, [sumId, api]);
 
     // LEAGUE RANKING INFORMATION
-    const leagueTier = info[1] && info[1].tier;
+    const leagueTier = info[0] && info[0].tier;
     const leagueRank = leagueTier
         ? leagueTier.toString().charAt(0) +
           leagueTier.toString().toLowerCase().slice(1)
         : null;
-    const leagueDiv = info[1] && info[1].rank;
-    const leagueLP = info[1] && info[1].leaguePoints;
-    const leagueWins = info[1] && info[1].wins;
-    const leagueLosses = info[1] && info[1].losses;
+    const leagueDiv = info[0] && info[0].rank;
+    const leagueLP = info[0] && info[0].leaguePoints;
+    const leagueWins = info[0] && info[0].wins;
+    const leagueLosses = info[0] && info[0].losses;
 
     const iconDir = require.context("../../css/rank_icons/");
     const icon = leagueTier

@@ -8,7 +8,7 @@ export default function Matches({accId, api, sumName}) {
     const [champ, setChamp] = useState([])
     useEffect(() => {
         const proxy = 'https://cors-anywhere.herokuapp.com/' //proxy incase local server does not work
-        axios.get(`${proxy}https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accId}?api_key=${api}`)
+        axios.get(`${proxy}https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${accId}/ids?api_key=${api}`)
         .then(res => {
             setData(res)
         })
@@ -17,10 +17,12 @@ export default function Matches({accId, api, sumName}) {
         })
     }, [accId, sumName, api])
     const dataArray = Object.values(data) // Object ->  Array
-    const matchArray = dataArray[0] && dataArray[0].matches
+    const matchArray = dataArray[0]
+
     const matchIds = matchArray ? matchArray.slice(0,10).map((match) => {
-        return match.gameId
+        return match
     }) : null
+    console.log(typeof matchIds)
     return(
         <div className="match-container">
             <form action="" onSubmit={e => {
@@ -28,7 +30,9 @@ export default function Matches({accId, api, sumName}) {
                 }} >
                 <input spellCheck="false" type="text" placeholder="Enter Champion Name" onChange={e => setChamp(e.target.value)}/>
             </form>
-            <Results matchIds={matchIds} api={api} champ={champ} sumName={sumName}/>
-        </div>
+            {matchIds.map(matchId => 
+                <Results matchIds={matchId} api={api} champ={champ} sumName={sumName} key={matchId}/>
+            )}
+            </div>
     );
 }

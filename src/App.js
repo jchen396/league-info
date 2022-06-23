@@ -13,9 +13,9 @@ function App() {
             <BrowserRouter>
                 <NavBar />
                 <Switch>
-                    <Route exact path="/champions" component={Champions} />
+                    <Route exact path="/" component={Champions} />
                     <Route path="/players" component={Players} />
-                    <Route path="/" component={About} />
+                    <Route path="/about" component={About} />
                     <Route path="/:post_id" component={Post} />
                 </Switch>
             </BrowserRouter>

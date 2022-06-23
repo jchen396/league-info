@@ -6,8 +6,8 @@ import '../../css/post.scss'
 export default function Post({match}) {
     const [info, setInfo] = useState([])
     useEffect(() => {
-        const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
-        axios.get(`${proxy}http://ddragon.leagueoflegends.com/cdn/9.19.1/data/en_US/champion/${match.params.post_id}.json `) //get data from league api
+        //const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
+        axios.get(`http://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/champion/${match.params.post_id}.json `) //get data from league api
             .then(res => {
                 setInfo(res.data.data) //retrieve data from api
             })
@@ -32,7 +32,7 @@ export default function Post({match}) {
                                 <img key={key} onClick={() => {setSkin(skin.num); setSelect(false)}} src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_${skin.num}.jpg`} alt="splash-art" />
                             )
                         })}
-                    </div>
+                    </div>  
                 </div>
                 <div className="main-image">
                     <h2 className="champ-name">{champ.name}</h2>
@@ -44,7 +44,7 @@ export default function Post({match}) {
                         {champ.spells.map((spell) => {
                             return(
                                 <div className="spell-info" key={champ.key}>
-                                    <img src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/${spell.id}.png`} alt={spell.id}/>
+                                    <img src={`http://ddragon.leagueoflegends.com/cdn/12.6.1/img/spell/${spell.id}.png`} alt={spell.id}/>
                                     <div className="spell-text">
                                         <h5>{spell.name}</h5>
                                         <div className="spell-body">

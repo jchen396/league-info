@@ -7,10 +7,10 @@ export default function Cards({ search }) {
     const [champions, setChampions] = useState([]);
     useEffect(() => {
         let cancel;
-        // const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
+        //const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
         axios
             .get(
-                `http://ddragon.leagueoflegends.com/cdn/9.19.1/data/en_US/champion.json `,
+                `http://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/champion.json `,
                 {
                     //get data from league api
                     cancelToken: new axios.CancelToken((c) => {
