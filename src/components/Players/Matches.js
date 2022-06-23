@@ -22,7 +22,7 @@ export default function Matches({accId, api, sumName}) {
     const matchIds = matchArray ? matchArray.slice(0,10).map((match) => {
         return match
     }) : null
-    console.log(typeof matchIds)
+    const matchIdsArray = matchIds && Object.entries(matchIds)
     return(
         <div className="match-container">
             <form action="" onSubmit={e => {
@@ -30,9 +30,11 @@ export default function Matches({accId, api, sumName}) {
                 }} >
                 <input spellCheck="false" type="text" placeholder="Enter Champion Name" onChange={e => setChamp(e.target.value)}/>
             </form>
-            {matchIds.map(matchId => 
-                <Results matchIds={matchId} api={api} champ={champ} sumName={sumName} key={matchId}/>
+            <div className='match-list'>
+            {matchIdsArray && matchIdsArray.map(matchId => 
+                <Results matchId={matchId} api={api} champ={champ} sumName={sumName} key={matchId}/>
             )}
+            </div>
             </div>
     );
 }

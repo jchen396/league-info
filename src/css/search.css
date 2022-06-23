@@ -10,7 +10,8 @@
       grid-template-columns: 1fr 4fr;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
-      grid-template-areas: "head match" "body match";
+      grid-template-areas: "head match"
+ "body match";
 }
 
 .profile-head {
@@ -183,6 +184,7 @@ div ::-webkit-scrollbar-thumb:hover {
         -ms-flex-direction: column;
             flex-direction: column;
     text-align: center;
+    height:80vh;
   }
   .profile-body {
     display: -ms-grid;
@@ -192,13 +194,25 @@ div ::-webkit-scrollbar-thumb:hover {
             align-items: center;
     justify-items: center;
     -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+          grid-template-columns: 1fr;
+    height: 70vh;
+      }
+  .match-body{
+    align-self:start;
   }
+  .match-post{
+    display:flex;
+  }
+
   .match-container {
     margin: 5em;
   }
-  .match-container,
-  .match-list {
+
+  .match-list{
+    height:30vh;
+    overflow: scroll;
+  }
+  .match-container{
     width: 75vw;
   }
 }

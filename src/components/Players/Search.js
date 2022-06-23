@@ -34,6 +34,7 @@ export default function Search({ search }) {
     const accId = sumArray[0] && sumArray[0].puuid; //encrypted account id
     const profileDisplay = sumName ? (
         <div className="result-container">
+            <div>
             <div className="profile-head">
                 <img
                     src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${sumIcon}.png?api_key=${apiKey}`}
@@ -49,7 +50,10 @@ export default function Search({ search }) {
             <div className="profile-body">
                 <Info sumId={sumId} api={apiKey} />
             </div>
-            <Matches accId={accId} api={apiKey} sumName={sumName} />
+            </div>
+            <div className="match-body">
+                <Matches accId={accId} api={apiKey} sumName={sumName} />
+            </div>
         </div>
     ) : (
         <div className="error">
