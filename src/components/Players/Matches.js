@@ -15,7 +15,7 @@ export default function Matches({accId, api, sumName}) {
         .catch(e => {
             console.log(e.response)
         })
-    }, [accId, sumName, api])
+    }, [])
     const dataArray = Object.values(data) // Object ->  Array
     const matchArray = dataArray[0]
 

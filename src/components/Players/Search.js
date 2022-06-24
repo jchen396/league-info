@@ -23,7 +23,7 @@ export default function Search({ search }) {
             })
             .catch((e) => {
                 console.log(e.err);
-            }, [summoner, apiKey]);
+            }, []);
     }, [search]);
     const sumArray = Object.values(summoner); //turn summoner into an array
     const sumName = sumArray[0] && sumArray[0].name; // returns NAME property from API
@@ -35,21 +35,21 @@ export default function Search({ search }) {
     const profileDisplay = sumName ? (
         <div className="result-container">
             <div>
-            <div className="profile-head">
-                <img
-                    src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${sumIcon}.png?api_key=${apiKey}`}
-                    height="150"
-                    width="150"
-                    alt="player-icon"
-                />
-                <div className="player-name">
-                    <h1>{sumName}</h1>
-                    <h4>Level {sumLevel}</h4>
+                <div className="profile-head">
+                    <img
+                        src={`http://ddragon.leagueoflegends.com/cdn/12.6.1/img/profileicon/${sumIcon}.png?api_key=${apiKey}`}
+                        height="150"
+                        width="150"
+                        alt="player-icon"
+                    />
+                    <div className="player-name">
+                        <h1>{sumName}</h1>
+                        <h4>Level {sumLevel}</h4>
+                    </div>
                 </div>
-            </div>
-            <div className="profile-body">
-                <Info sumId={sumId} api={apiKey} />
-            </div>
+                <div className="profile-body">
+                    <Info sumId={sumId} api={apiKey} />
+                </div>
             </div>
             <div className="match-body">
                 <Matches accId={accId} api={apiKey} sumName={sumName} />

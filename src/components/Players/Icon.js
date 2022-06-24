@@ -7,7 +7,7 @@ export default function Icon({champId, api}) {
     useEffect(() => {
         let cancel
         const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
-        axios.get(`${proxy}http://ddragon.leagueoflegends.com/cdn/9.19.1/data/en_US/champion.json`, 
+        axios.get(`${proxy}http://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/champion.json`, 
         {cancelToken: new axios.CancelToken(c =>{
             cancel = c
         })}) //get data from league api
@@ -25,7 +25,7 @@ export default function Icon({champId, api}) {
         if(Number(champ.key) === champId){
             return(
                 <div className="champ-icon" key={id}>
-                    <img src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${champ.id}.png?api_key=${api}`} alt={`${champ.name}-icon`}
+                    <img src={`http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/${champ.id}.png?api_key=${api}`} alt={`${champ.name}-icon`}
                     width="80" height="80"/>
                     <h6>{champ.name}</h6>
                 </div>

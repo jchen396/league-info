@@ -17,7 +17,7 @@ export default function Info({ sumId, api }) {
             .catch((e) => {
                 console.log(e.response);
             });
-    }, [sumId, api]);
+    }, []);
 
     // LEAGUE RANKING INFORMATION
     const leagueTier = info[0] && info[0].tier;

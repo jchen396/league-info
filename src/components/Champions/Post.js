@@ -22,6 +22,7 @@ export default function Post({match}) {
             setClassList("skin-screen")
     }, [select])
     const infoArray = Object.values(info)
+    console.log(infoArray)
     const infoList = infoArray ? (infoArray.map((champ) => {
         return(
             <div className="main-display" key={champ.key}>
@@ -44,9 +45,13 @@ export default function Post({match}) {
                         {champ.spells.map((spell) => {
                             return(
                                 <div className="spell-info" key={champ.key}>
-                                    <img src={`http://ddragon.leagueoflegends.com/cdn/12.6.1/img/spell/${spell.id}.png`} alt={spell.id}/>
-                                    <div className="spell-text">
+                                    <img style={{justifySelf:"end"}} src={`http://ddragon.leagueoflegends.com/cdn/12.6.1/img/spell/${spell.id}.png`} alt={spell.id}/>
+                                    <div style={{marginLeft:"2em"}}>
                                         <h5>{spell.name}</h5>
+                                        <p style={{color:"white"}}>{spell.description}</p>    
+                                    </div>
+                                    <div className="spell-text">
+                                        
                                         <div className="spell-body">
                                             <div className="cd-text">
                                                 <span>Cooldown:</span>

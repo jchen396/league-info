@@ -24,7 +24,7 @@ export default function Results({matchId, champ, api, sumName}) {
             
             return () => cancel
         }
-    }, [matchId, sumName])
+    }, [])
 
 
     // useEffect(() => {
@@ -59,7 +59,6 @@ export default function Results({matchId, champ, api, sumName}) {
         return participant.summonerName == sumName
     }) || []
 
-    console.log(player[0])
     /* Creating match statistics */
     const playerInfo = player && player[0]
     const champId = playerInfo && playerInfo.championId //champion Id
