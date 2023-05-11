@@ -8,19 +8,19 @@ import Players from "./components/Players/Players";
 import Post from "./components/Champions/Post";
 
 function App() {
-    return (
-        <div className="App">
-            <BrowserRouter>
-                <NavBar />
-                <Switch>
-                    <Route exact path="/champions" component={Champions} />
-                    <Route path="/players" component={Players} />
-                    <Route path="/" component={About} />
-                    <Route path="/:post_id" component={Post} />
-                </Switch>
-            </BrowserRouter>
-        </div>
-    );
+	return (
+		<div className="App">
+			<BrowserRouter>
+				<NavBar />
+				<Switch>
+					<Route exact path="/champions" component={Champions} />
+					<Route exact path="/players" component={Players} />
+					<Route exact path="/" component={About} />
+					<Route path="/champions/:post_id" component={Post} />
+				</Switch>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;
