@@ -6,9 +6,10 @@ export default function Info({ sumId, api }) {
 	const [info, setInfo] = useState([]);
 
 	useEffect(() => {
+		const proxy = "http://cors.now.sh/ "; //proxy incase local server does not work
 		axios
 			.get(
-				`https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${sumId}?api_key=${api}`
+				`${proxy}https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${sumId}?api_key=${api}`
 			)
 			.then((res) => {
 				setInfo(res.data);

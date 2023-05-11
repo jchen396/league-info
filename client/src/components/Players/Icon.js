@@ -7,11 +7,14 @@ export default function Icon({ champId, api }) {
 	useEffect(() => {
 		let cancel;
 		axios
-			.get(`/data/en_US/champion.json`, {
-				cancelToken: new axios.CancelToken((c) => {
-					cancel = c;
-				}),
-			}) //get data from league api
+			.get(
+				`${process.env.REACT_APP_DDRAGON_API}data/en_US/champion.json`,
+				{
+					cancelToken: new axios.CancelToken((c) => {
+						cancel = c;
+					}),
+				}
+			) //get data from league api
 			.then((res) => {
 				setData(res.data.data);
 				// console.log(res)
@@ -27,7 +30,7 @@ export default function Icon({ champId, api }) {
 			return (
 				<div className="champ-icon" key={id}>
 					<img
-						src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${champ.id}.png?api_key=${api}`}
+						src={`${process.env.REACT_APP_DDRAGON_API}img/champion/${champ.id}.png?api_key=${api}`}
 						alt={`${champ.name}-icon`}
 						width="80"
 						height="80"

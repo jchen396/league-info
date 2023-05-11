@@ -7,10 +7,10 @@ export default function Matches({ accId, api, sumName }) {
 	const [data, setData] = useState([]);
 	const [champ, setChamp] = useState([]);
 	useEffect(() => {
-		//const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
+		const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
 		axios
 			.get(
-				`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accId}?api_key=${api}`
+				`${proxy}https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accId}?api_key=${api}`
 			)
 			.then((res) => {
 				setData(res);

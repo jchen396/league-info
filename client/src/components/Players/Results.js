@@ -51,7 +51,7 @@ export default function Results({ matchIds, champ, api, sumName }) {
 		//const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
 		axios
 			.get(
-				`http://ddragon.leagueoflegends.com/cdn/9.19.1/data/en_US/champion.json`,
+				`${process.env.REACT_APP_DDRAGON_API}data/en_US/champion.json`,
 				{
 					cancelToken: new axios.CancelToken((c) => {
 						cancel = c;

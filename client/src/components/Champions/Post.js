@@ -9,7 +9,7 @@ export default function Post({ match }) {
 		//const proxy = 'https://cors-anywhere.herokuapp.com/'; //proxy incase local server does not work
 		axios
 			.get(
-				`http://ddragon.leagueoflegends.com/cdn/9.19.1/data/en_US/champion/${match.params.post_id}.json `
+				`${process.env.REACT_APP_DDRAGON_API}data/en_US/champion/${match.params.post_id}.json `
 			) //get data from league api
 			.then((res) => {
 				setInfo(res.data.data); //retrieve data from api
@@ -64,7 +64,7 @@ export default function Post({ match }) {
 								return (
 									<div className="spell-info" key={spellKey}>
 										<img
-											src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/${spell.id}.png`}
+											src={`${process.env.REACT_APP_DDRAGON_API}img/spell/${spell.id}.png`}
 											alt={spell.id}
 										/>
 										<div className="spell-text">

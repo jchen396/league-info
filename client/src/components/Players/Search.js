@@ -10,7 +10,6 @@ require("dotenv").config();
 export default function Search({ search }) {
 	//get search ID from prop
 	const [summoner, setSummoner] = useState([]); // get player database
-	//const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
 	const apiKey = process.env.REACT_APP_LEAGUE_API; // API key acquired from riot games dev site
 	useEffect(() => {
 		axios
@@ -36,7 +35,7 @@ export default function Search({ search }) {
 		<div className="result-container">
 			<div className="profile-head">
 				<img
-					src={`http://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${sumIcon}.png?api_key=${apiKey}`}
+					src={`${process.env.REACT_APP_DDRAGON_API}img/profileicon/${sumIcon}.png?api_key=${apiKey}`}
 					height="150"
 					width="150"
 					alt="player-icon"
