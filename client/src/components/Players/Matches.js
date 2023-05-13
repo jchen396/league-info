@@ -3,29 +3,21 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Results from "./Results.js";
 
-export default function Matches({ accId, api, sumName }) {
-	const [data, setData] = useState([]);
+export default function Matches({ puuid, api, sumName }) {
+	const [matchIds, setMatchIds] = useState([]);
 	const [champ, setChamp] = useState([]);
 	useEffect(() => {
-		const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
 		axios
-			.get(
-				`${proxy}https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accId}?api_key=${api}`
-			)
+			.post(`${process.env.REACT_APP_PROXY_SERVER_DOMAIN}matches`, {
+				puuid,
+			})
 			.then((res) => {
-				setData(res);
+				setMatchIds(res.data);
 			})
 			.catch((e) => {
-				console.log(e.response);
+				console.log(e);
 			});
-	}, [accId, sumName, api]);
-	const dataArray = Object.values(data); // Object ->  Array
-	const matchArray = dataArray[0] && dataArray[0].matches;
-	const matchIds = matchArray
-		? matchArray.slice(0, 10).map((match) => {
-				return match.gameId;
-		  })
-		: null;
+	}, [puuid, sumName, api]);
 	return (
 		<div className="match-container">
 			<form
@@ -45,7 +37,7 @@ export default function Matches({ accId, api, sumName }) {
 				matchIds={matchIds}
 				api={api}
 				champ={champ}
-				sumName={sumName}
+				puuid={puuid}
 			/>
 		</div>
 	);

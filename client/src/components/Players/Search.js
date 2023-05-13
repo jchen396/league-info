@@ -12,25 +12,26 @@ export default function Search({ search }) {
 	const [summoner, setSummoner] = useState([]); // get player database
 	const apiKey = process.env.REACT_APP_LEAGUE_API; // API key acquired from riot games dev site
 	useEffect(() => {
-		axios
-			.get(
-				`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${search}?api_key=${apiKey}`
-			)
-			.then((res) => {
-				//get results from RIOT API according to the summoner name submitted
-				setSummoner(res);
-			})
-			.catch((e) => {
-				console.log(e.err);
-			});
+		if (search !== "") {
+			axios
+				.post(`${process.env.REACT_APP_PROXY_SERVER_DOMAIN}summoner`, {
+					search,
+				})
+				.then((res) => {
+					//get results from RIOT API according to the summoner name submitted
+					setSummoner(res.data);
+				})
+				.catch((e) => {
+					console.log(e);
+				});
+		}
 	}, [apiKey, search]);
-	const sumArray = Object.values(summoner); //turn summoner into an array
-	const sumName = sumArray[0] && sumArray[0].name; // returns NAME property from API
-	const sumLevel = sumArray[0] && sumArray[0].summonerLevel; // LEVEL
-	const sumIcon = sumArray[0] && sumArray[0].profileIconId; // ICON
+	const sumName = summoner && summoner.name; // returns NAME property from API
+	const sumLevel = summoner && summoner.summonerLevel; // LEVEL
+	const sumIcon = summoner && summoner.profileIconId; // ICON
 
-	const sumId = sumArray[0] && sumArray[0].id; // encrypted summoner id
-	const accId = sumArray[0] && sumArray[0].accountId; //encrypted account id
+	const sumId = summoner && summoner.id; // encrypted summoner id
+	const puuid = summoner && summoner.puuid; //encrypted puuid
 	const profileDisplay = sumName ? (
 		<div className="result-container">
 			<div className="profile-head">
@@ -48,7 +49,7 @@ export default function Search({ search }) {
 			<div className="profile-body">
 				<Info sumId={sumId} api={apiKey} />
 			</div>
-			<Matches accId={accId} api={apiKey} sumName={sumName} />
+			<Matches puuid={puuid} api={apiKey} sumName={sumName} />
 		</div>
 	) : (
 		<div className="error">

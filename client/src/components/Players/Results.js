@@ -3,30 +3,30 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Icon from "./Icon.js";
 
-export default function Results({ matchIds, champ, api, sumName }) {
-	const [match, setMatch] = useState([]);
-	const [temp, setTemp] = useState([]);
-	const [main, setMain] = useState([]);
+require("dotenv").config();
+
+export default function Results({ matchIds, champ, api, puuid }) {
+	const [matches, setMatches] = useState([]);
 	const [name, setName] = useState([]);
 	useEffect(() => {
 		//API fetching using axios
 		let cancel;
-		const proxy = "http://cors.now.sh/ "; //proxy incase local server does not work
-		if (matchIds !== null && matchIds !== undefined) {
+		if (matchIds.length) {
 			//only get when id is declared with match values
-			matchIds.forEach((id) => {
+			matchIds.slice(0, 10).forEach((matchId) => {
 				//loop through all exisitng ids from matchIds
 				axios
-					.get(
-						`${proxy}https://na1.api.riotgames.com/lol/match/v4/matches/${id}?api_key=${api}`,
+					.post(
+						`${process.env.REACT_APP_PROXY_SERVER_DOMAIN}results`,
 						{
+							matchId,
 							cancelToken: new axios.CancelToken((c) => {
 								cancel = c;
 							}),
 						}
 					)
 					.then((res) => {
-						setMatch([res]);
+						setMatches((prev) => [...prev, { ...res.data }]);
 					})
 					.catch((e) => {
 						console.log(e);
@@ -34,21 +34,10 @@ export default function Results({ matchIds, champ, api, sumName }) {
 			});
 			return () => cancel;
 		}
-	}, [api, matchIds, sumName]);
-
-	useEffect(() => {
-		setTemp([...main, match]);
-		return () => setMain([]);
-	}, [main, match]);
-
-	useEffect(() => {
-		setMain([...temp, match]);
-		return () => setTemp([]);
-	}, [match, temp]);
+	}, [matchIds]);
 
 	useEffect(() => {
 		let cancel;
-		//const proxy = "https://cors-anywhere.herokuapp.com/"; //proxy incase local server does not work
 		axios
 			.get(
 				`${process.env.REACT_APP_DDRAGON_API}data/en_US/champion.json`,
@@ -67,54 +56,35 @@ export default function Results({ matchIds, champ, api, sumName }) {
 			});
 		return () => cancel;
 	}, []);
-
-	const mainArray = Object.values(main);
 	/* MAPPING THROUGH MATCHES */
 	const matchList =
-		(mainArray.length - 1) % 10 === 0 ? (
-			mainArray.slice(1, 11).map((game, id) => {
-				//loop through each object and output
-				const data = game[0] && game[0].data; // access to game[0].data decrease repitiveness in code
-				console.log(data);
-				const mode = data && game[0].data.gameMode; // GAME MODE
-				const duration = data && game[0].data.gameDuration; //unformated duration of game
+		matches.length === 10 ? (
+			matches.map((game, id) => {
+				const gameInfo = game && game.info;
+				const mode = gameInfo && gameInfo.gameMode; // GAME MODE
+				const duration = gameInfo && gameInfo.gameDuration; //unformated duration of game
 				const minutes = Math.floor(duration / 60);
 				const seconds =
 					duration % 60 >= 10 ? duration % 60 : `0${duration % 60}`;
 				const time = `${minutes} : ${seconds}`;
 
-				const player = data && game[0].data.participants; //get individual player data
-				const matchPlayer = data && game[0].data.participantIdentities;
+				const players = gameInfo && gameInfo.participants; //get individual player data
 
-				const getId = matchPlayer
-					.map((summoner) => {
-						const matchName =
-							summoner.player && summoner.player.summonerName;
-						if (matchName === sumName) {
-							return summoner.participantId;
-						} else {
-							return null;
-						}
-					})
-					.filter((player) => {
-						return player !== undefined;
-					});
+				const playerMatchData = players.find(
+					(player) => player.puuid === puuid
+				);
 
 				/* Creating match statistics */
-				const champId =
-					player &&
-					game[0].data.participants[getId[0] - 1].championId; //champion Id
-				const statsAccess =
-					player && game[0].data.participants[getId[0] - 1].stats; //get stats
-				const deaths = statsAccess.deaths;
-				const assists = statsAccess.assists;
-				const kills = statsAccess.kills;
+				const champId = playerMatchData.championId; //champion Id
+				const deaths = playerMatchData.deaths;
+				const assists = playerMatchData.assists;
+				const kills = playerMatchData.kills;
 				const stats = `${kills}/${deaths}/${assists}`;
 
-				const outcomeColor = statsAccess.win
+				const outcomeColor = playerMatchData.win
 					? "green-text"
 					: "red-text";
-				const outcome = statsAccess.win ? "VICTORY" : "DEFEAT";
+				const outcome = playerMatchData.win ? "VICTORY" : "DEFEAT";
 
 				/* Converting champ id to string name */
 				const nameArray = Object.values(name);
