@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8ec97d919b98a10e86b98cc7b39e9b8f",
+    "revision": "0cc91d7c8108b044e1a94697eff629c2",
     "url": "/league-info/index.html"
   },
   {
-    "revision": "97a5458bdb944177bd1d",
-    "url": "/league-info/static/css/main.6ec3dbff.chunk.css"
+    "revision": "1b3e2ba1981d5559c69e",
+    "url": "/league-info/static/css/main.cc36adb0.chunk.css"
   },
   {
-    "revision": "aabf82bcfbfe68b4fea1",
-    "url": "/league-info/static/js/2.f8ca5590.chunk.js"
+    "revision": "01c0fbae1aaa7923bcd8",
+    "url": "/league-info/static/js/2.a6bd4f8e.chunk.js"
   },
   {
-    "revision": "97a5458bdb944177bd1d",
-    "url": "/league-info/static/js/main.d5f32b45.chunk.js"
+    "revision": "1b3e2ba1981d5559c69e",
+    "url": "/league-info/static/js/main.b3fc9b3f.chunk.js"
   },
   {
-    "revision": "f1f57072f9f451248999",
-    "url": "/league-info/static/js/runtime~main.21a7e22f.js"
+    "revision": "82eeb4added360f97808",
+    "url": "/league-info/static/js/runtime~main.f438c579.js"
   },
   {
     "revision": "39964f7f7440521c5d53a63cbeed96ff",
