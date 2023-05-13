@@ -52,8 +52,9 @@
       -ms-flex-align: center;
           align-items: center;
   justify-items: center;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+
 }
 
 .spell-text {
