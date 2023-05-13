@@ -16,7 +16,7 @@ export default function NavBar() {
                 </div>
                 <ul className={classList}>
                     <li onClick={() => setActive(false)}>
-                        <NavLink to="/champions">Champions</NavLink>
+                        <NavLink to="/">Champions</NavLink>
                     </li>
                     <li onClick={() => setActive(false)}>
                         <NavLink to="/players">Players</NavLink>
