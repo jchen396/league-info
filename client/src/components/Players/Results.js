@@ -58,7 +58,7 @@ export default function Results({ matchIds, champ, api, puuid }) {
 	}, []);
 	/* MAPPING THROUGH MATCHES */
 	const matchList =
-		matches.length === 10 ? (
+		matches.length > 0 ? (
 			matches.map((game, id) => {
 				const gameInfo = game && game.info;
 				const mode = gameInfo && gameInfo.gameMode; // GAME MODE

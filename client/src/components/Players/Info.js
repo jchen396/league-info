@@ -9,7 +9,7 @@ export default function Info({ sumId }) {
 		axios
 			.post(`${process.env.REACT_APP_PROXY_SERVER_DOMAIN}info`, { sumId })
 			.then((res) => {
-				setInfo(res.data);
+				setInfo(res.data[0]);
 			})
 			.catch((e) => {
 				console.log(e.response);
