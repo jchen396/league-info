@@ -25,7 +25,7 @@ export default function Search({ search }) {
 					console.log(e);
 				});
 		}
-	}, [apiKey, search]);
+	}, [search]);
 	const sumName = summoner && summoner.name; // returns NAME property from API
 	const sumLevel = summoner && summoner.summonerLevel; // LEVEL
 	const sumIcon = summoner && summoner.profileIconId; // ICON

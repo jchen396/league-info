@@ -9,6 +9,7 @@ export default function Results({ matchIds, champ, api, puuid }) {
 	const [matches, setMatches] = useState([]);
 	const [name, setName] = useState([]);
 	useEffect(() => {
+		setMatches([]);
 		//API fetching using axios
 		let cancel;
 		if (matchIds.length) {
@@ -58,7 +59,7 @@ export default function Results({ matchIds, champ, api, puuid }) {
 	}, []);
 	/* MAPPING THROUGH MATCHES */
 	const matchList =
-		matches.length > 0 ? (
+		matches.length === 10 ? (
 			matches.map((game, id) => {
 				const gameInfo = game && game.info;
 				const mode = gameInfo && gameInfo.gameMode; // GAME MODE
@@ -75,16 +76,16 @@ export default function Results({ matchIds, champ, api, puuid }) {
 				);
 
 				/* Creating match statistics */
-				const champId = playerMatchData.championId; //champion Id
-				const deaths = playerMatchData.deaths;
-				const assists = playerMatchData.assists;
-				const kills = playerMatchData.kills;
+				const champId = playerMatchData?.championId; //champion Id
+				const deaths = playerMatchData?.deaths;
+				const assists = playerMatchData?.assists;
+				const kills = playerMatchData?.kills;
 				const stats = `${kills}/${deaths}/${assists}`;
 
-				const outcomeColor = playerMatchData.win
+				const outcomeColor = playerMatchData?.win
 					? "green-text"
 					: "red-text";
-				const outcome = playerMatchData.win ? "VICTORY" : "DEFEAT";
+				const outcome = playerMatchData?.win ? "VICTORY" : "DEFEAT";
 
 				/* Converting champ id to string name */
 				const nameArray = Object.values(name);
@@ -106,7 +107,7 @@ export default function Results({ matchIds, champ, api, puuid }) {
 					? "true"
 					: "false";
 
-				return (
+				return playerMatchData ? (
 					<div className={`match-post ${nameMatch}`} key={id}>
 						<Icon champId={champId} api={api} />
 						<div>
@@ -118,6 +119,8 @@ export default function Results({ matchIds, champ, api, puuid }) {
 							<h5>{time}</h5>
 						</div>
 					</div>
+				) : (
+					<div>Loading ...</div>
 				);
 			})
 		) : (
