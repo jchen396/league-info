@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/league-info/static/css/main.cc36adb0.chunk.css",
-    "main.js": "/league-info/static/js/main.0672a7ad.chunk.js",
-    "main.js.map": "/league-info/static/js/main.0672a7ad.chunk.js.map",
+    "main.js": "/league-info/static/js/main.e12a6336.chunk.js",
+    "main.js.map": "/league-info/static/js/main.e12a6336.chunk.js.map",
     "runtime~main.js": "/league-info/static/js/runtime~main.f438c579.js",
     "runtime~main.js.map": "/league-info/static/js/runtime~main.f438c579.js.map",
     "static/js/2.a6bd4f8e.chunk.js": "/league-info/static/js/2.a6bd4f8e.chunk.js",
     "static/js/2.a6bd4f8e.chunk.js.map": "/league-info/static/js/2.a6bd4f8e.chunk.js.map",
     "index.html": "/league-info/index.html",
-    "precache-manifest.badc767949191ca5d8dc6126ca6c937d.js": "/league-info/precache-manifest.badc767949191ca5d8dc6126ca6c937d.js",
+    "precache-manifest.f0ac671f0b75e3470ad319cf42e249a9.js": "/league-info/precache-manifest.f0ac671f0b75e3470ad319cf42e249a9.js",
     "service-worker.js": "/league-info/service-worker.js",
     "static/css/main.cc36adb0.chunk.css.map": "/league-info/static/css/main.cc36adb0.chunk.css.map",
     "static/media/Emblem_Bronze.png": "/league-info/static/media/Emblem_Bronze.39964f7f.png",
