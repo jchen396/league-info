@@ -5,9 +5,8 @@ import Results from "./Results.js";
 
 export default function Matches({ puuid, api, sumName }) {
 	const [matchIds, setMatchIds] = useState([]);
-	const [champ, setChamp] = useState([]);
+	const [champ, setChamp] = useState("");
 	useEffect(() => {
-		console.log("getting new matchIds");
 		axios
 			.post(`${process.env.REACT_APP_PROXY_SERVER_DOMAIN}matches`, {
 				puuid,

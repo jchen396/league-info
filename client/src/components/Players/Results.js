@@ -89,36 +89,32 @@ export default function Results({ matchIds, champ, api, puuid }) {
 
 				/* Converting champ id to string name */
 				const nameArray = Object.values(name);
-				const champName = nameArray
-					.map((champ) => {
-						//CURRENT CHAMPION SELECT
-						if (Number(champ.key) === champId) {
-							return champ.name;
-						} else {
-							return null;
-						}
-					})
-					.filter((champ) => {
-						return champ !== undefined;
-					});
+				const champName = nameArray.find((champion) => {
+					//CURRENT CHAMPION SELECT
+					return Number(champion.key) === champId;
+				});
 
 				const re = new RegExp(champ, "i");
-				const nameMatch = String(champName).match(re)
-					? "true"
-					: "false";
+				const nameMatch = champ
+					? String(champName.name).match(re)
+						? "true"
+						: "false"
+					: "true";
 
 				return playerMatchData ? (
-					<div className={`match-post ${nameMatch}`} key={id}>
-						<Icon champId={champId} api={api} />
-						<div>
-							<h4 className={outcomeColor}>{outcome}</h4>
-							<h4 className={outcomeColor}>{stats}</h4>
+					nameMatch && (
+						<div className={`match-post ${nameMatch}`} key={id}>
+							<Icon champId={champId} api={api} />
+							<div>
+								<h4 className={outcomeColor}>{outcome}</h4>
+								<h4 className={outcomeColor}>{stats}</h4>
+							</div>
+							<div className="match-body">
+								<h4>{mode}</h4>
+								<h5>{time}</h5>
+							</div>
 						</div>
-						<div className="match-body">
-							<h4>{mode}</h4>
-							<h5>{time}</h5>
-						</div>
-					</div>
+					)
 				) : (
 					<div>Loading ...</div>
 				);
@@ -126,5 +122,6 @@ export default function Results({ matchIds, champ, api, puuid }) {
 		) : (
 			<div className="error">None</div>
 		);
+	console.log(matchList);
 	return <div className="match-list">{matchList}</div>;
 }
