@@ -10,21 +10,30 @@ require("dotenv").config();
 export default function Search({ search }) {
 	//get search ID from prop
 	const [summoner, setSummoner] = useState([]); // get player database
+	const [summonerLoading, setSummonerLoading] = useState(false);
 	const apiKey = process.env.REACT_APP_LEAGUE_API; // API key acquired from riot games dev site
 	useEffect(() => {
-		if (search !== "") {
-			axios
-				.post(`${process.env.REACT_APP_PROXY_SERVER_DOMAIN}summoner`, {
-					search,
-				})
-				.then((res) => {
-					//get results from RIOT API according to the summoner name submitted
-					setSummoner(res.data);
-				})
-				.catch((e) => {
-					console.log(e);
-				});
-		}
+		const getSummonerInfo = async () => {
+			if (search !== "") {
+				setSummonerLoading(true);
+				await axios
+					.post(
+						`${process.env.REACT_APP_PROXY_SERVER_DOMAIN}summoner`,
+						{
+							search,
+						}
+					)
+					.then((res) => {
+						//get results from RIOT API according to the summoner name submitted
+						setSummoner(res.data);
+					})
+					.catch((e) => {
+						console.log(e);
+					});
+				setSummonerLoading(false);
+			}
+		};
+		getSummonerInfo();
 	}, [search]);
 	const sumName = summoner && summoner.name; // returns NAME property from API
 	const sumLevel = summoner && summoner.summonerLevel; // LEVEL
@@ -50,6 +59,10 @@ export default function Search({ search }) {
 				<Info sumId={sumId} api={apiKey} />
 			</div>
 			<Matches puuid={puuid} api={apiKey} sumName={sumName} />
+		</div>
+	) : summonerLoading ? (
+		<div className="error">
+			<h5>Loading ...</h5>
 		</div>
 	) : (
 		<div className="error">

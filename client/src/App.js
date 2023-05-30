@@ -13,10 +13,21 @@ function App() {
 			<BrowserRouter>
 				<NavBar />
 				<Switch>
-					<Route exact path="/champions" component={Champions} />
-					<Route exact path="/players" component={Players} />
-					<Route exact path="/" component={About} />
-					<Route path="/champions/:post_id" component={Post} />
+					<Route
+						exact
+						path="/league-info/champions"
+						component={Champions}
+					/>
+					<Route
+						exact
+						path="/league-info/players"
+						component={Players}
+					/>
+					<Route exact path="/league-info" component={About} />
+					<Route
+						path="league-info/champions/:post_id"
+						component={Post}
+					/>
 				</Switch>
 			</BrowserRouter>
 		</div>

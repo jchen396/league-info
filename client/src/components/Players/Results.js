@@ -122,6 +122,5 @@ export default function Results({ matchIds, champ, api, puuid }) {
 		) : (
 			<div className="error">None</div>
 		);
-	console.log(matchList);
 	return <div className="match-list">{matchList}</div>;
 }
